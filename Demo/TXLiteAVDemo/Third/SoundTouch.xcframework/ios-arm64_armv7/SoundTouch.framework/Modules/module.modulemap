@@ -1,0 +1,6 @@
+framework module SoundTouch {
+  umbrella header "SoundTouch.h"
+
+  export *
+  module * { export * }
+}
