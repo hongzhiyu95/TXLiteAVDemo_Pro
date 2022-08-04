@@ -28,6 +28,9 @@
 		21700DDB2555B10200C5F2FF /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855421EE8FDDA00EE47D7 /* VideoToolbox.framework */; };
 		21700DDC2555B10800C5F2FF /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F8553A1EE8FDBF00EE47D7 /* Accelerate.framework */; };
 		21D67206252B431E007C4B9F /* TRTCCustomerCrypt.mm in Sources */ = {isa = PBXBuildFile; fileRef = 21D671F3252B431D007C4B9F /* TRTCCustomerCrypt.mm */; };
+		2B5667A3289BE129006F00B0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */; };
+		2B5667A4289BE129006F00B0 /* TXLiteAVSDK_Professional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B35CD8F2BD7C656AF9E34A9 /* TXLiteAVSDK_Professional.framework */; };
+		2B5667A8289BE129006F00B0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
 		2BFD9F282844840400F79D6B /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855421EE8FDDA00EE47D7 /* VideoToolbox.framework */; };
 		2BFD9F2D2844841900F79D6B /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
 		2BFD9F2E2844841A00F79D6B /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,9 +40,7 @@
 		2BFD9F332844849800F79D6B /* MetalKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F312844846800F79D6B /* MetalKit.framework */; };
 		2BFD9F34284484A200F79D6B /* Metal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF31F0EB1FBB2A7E0066BF7D /* Metal.framework */; };
 		2BFD9F35284484DB00F79D6B /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */; };
-		2BFD9F36284484DB00F79D6B /* TXFFmpeg.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BFD9F37284484DB00F79D6B /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
-		2BFD9F38284484DB00F79D6B /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BFD9F3B2844850100F79D6B /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3A2844850000F79D6B /* MobileCoreServices.framework */; };
 		2BFD9F3D2844853A00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
 		2BFD9F3E2844854D00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
@@ -374,18 +375,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		2BFD9F39284484DB00F79D6B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				2BFD9F36284484DB00F79D6B /* TXFFmpeg.xcframework in Embed Frameworks */,
-				2BFD9F38284484DB00F79D6B /* TXSoundTouch.xcframework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		456A68ED225CCDB400609884 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -448,6 +437,7 @@
 		12543E1C255D1C7F00BE93D4 /* CoreImageFilter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreImageFilter.m; sourceTree = "<group>"; };
 		21D671F3252B431D007C4B9F /* TRTCCustomerCrypt.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = TRTCCustomerCrypt.mm; sourceTree = "<group>"; };
 		21D67204252B431D007C4B9F /* TRTCCustomerCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCustomerCrypt.h; sourceTree = "<group>"; };
+		2B5667AC289BE129006F00B0 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = ../SDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = ../SDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		2BFD9F312844846800F79D6B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -1016,6 +1006,7 @@
 				45111F2923AB6657005C1726 /* UGCKit.framework in Frameworks */,
 				51A289FB230FB95800B9B73F /* OpenAL.framework in Frameworks */,
 				91A1D613214674B000EA9A19 /* libSuperPlayer.a in Frameworks */,
+				2B5667A8289BE129006F00B0 /* TXSoundTouch.xcframework in Frameworks */,
 				91F87A7F1FF4A0FD001644B1 /* libsqlite3.tbd in Frameworks */,
 				A0B8FC06207E235B008D7982 /* QCloudCore.framework in Frameworks */,
 				40091FAB1F4FCBBE009B882D /* Foundation.framework in Frameworks */,
@@ -1037,10 +1028,12 @@
 				40091FB61F4FCBBE009B882D /* VideoToolbox.framework in Frameworks */,
 				A0B8FC02207E235B008D7982 /* QCloudCOSXML.framework in Frameworks */,
 				40091FB81F4FCBBE009B882D /* CoreMedia.framework in Frameworks */,
+				2B5667A3289BE129006F00B0 /* TXFFmpeg.xcframework in Frameworks */,
 				40091FB91F4FCBBE009B882D /* CoreGraphics.framework in Frameworks */,
 				40091FBA1F4FCBBE009B882D /* Accelerate.framework in Frameworks */,
 				2BFD9F2F2844841A00F79D6B /* TXFFmpeg.xcframework in Frameworks */,
 				6A3105E222687996002F6115 /* libmtasdk.a in Frameworks */,
+				2B5667A4289BE129006F00B0 /* TXLiteAVSDK_Professional.framework in Frameworks */,
 				40091FBB1F4FCBBE009B882D /* Security.framework in Frameworks */,
 				40091FBC1F4FCBBE009B882D /* AssetsLibrary.framework in Frameworks */,
 				2BFD9F2D2844841900F79D6B /* TXSoundTouch.xcframework in Frameworks */,
@@ -1117,6 +1110,15 @@
 				1205E5A72553DFC600FB938C /* vertexShader.vsh */,
 			);
 			path = CustomPreprocess;
+			sourceTree = "<group>";
+		};
+		2B5667AB289BE129006F00B0 /* ImSDK */ = {
+			isa = PBXGroup;
+			children = (
+				2B5667AC289BE129006F00B0 /* ImSDK.framework */,
+			);
+			name = ImSDK;
+			path = ../SDK/ImSDK;
 			sourceTree = "<group>";
 		};
 		3F57C4CC236C1EBB00D4DFCE /* Settings */ = {
@@ -1537,6 +1539,7 @@
 		40F854FF1EE8FD2F00EE47D7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				2B5667AB289BE129006F00B0 /* ImSDK */,
 				2BFD9F3C2844853A00F79D6B /* GLKit.framework */,
 				2BFD9F3A2844850000F79D6B /* MobileCoreServices.framework */,
 				2BFD9F312844846800F79D6B /* MetalKit.framework */,
@@ -2522,7 +2525,6 @@
 				D6D9E37E20D2862500B6D607 /* Sources */,
 				D6D9E38320D2862500B6D607 /* Frameworks */,
 				D6D9E38920D2862500B6D607 /* Resources */,
-				2BFD9F39284484DB00F79D6B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -2543,11 +2545,9 @@
 				ORGANIZATIONNAME = Tencent;
 				TargetAttributes = {
 					40091F6D1F4FCBBE009B882D = {
-						DevelopmentTeam = F9E6VPNRYT;
 						ProvisioningStyle = Automatic;
 					};
 					D6D9E37D20D2862500B6D607 = {
-						DevelopmentTeam = F9E6VPNRYT;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -2985,7 +2985,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F9E6VPNRYT;
+				DEVELOPMENT_TEAM = UHDRCXNB5K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3320,7 +3320,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = F9E6VPNRYT;
+				DEVELOPMENT_TEAM = UHDRCXNB5K;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
