@@ -433,9 +433,12 @@ TXBitrateViewDelegate
     {
         _txVodPlayer.vodDelegate = self;
         
+        
+        _txVodPlayer.enableHWAcceleration = NO;
         if (_config == nil)
         {
             _config = [[TXVodPlayConfig alloc] init];
+            _config.playerType =1;
         }
         
         if (_enableCache) {

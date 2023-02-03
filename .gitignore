@@ -360,3 +360,4 @@ SDK/TXSoundTouch.xcframework/ios-x86_64-simulator/TXSoundTouch.framework/Headers
 SDK/TXSoundTouch.xcframework/ios-x86_64-simulator/TXSoundTouch.framework/Modules/module.modulemap
 SDK/TXSoundTouch.xcframework/TXSoundTouch.dSYM/Contents/Info.plist
 SDK/TXSoundTouch.xcframework/TXSoundTouch.dSYM/Contents/Resources/DWARF/TXSoundTouch
+Demo/TXLiteAVDemo/TRTC/GenerateTestUserSig.h
