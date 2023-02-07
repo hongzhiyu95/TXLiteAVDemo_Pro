@@ -6,6 +6,9 @@
 #import "TXLivePlayer.h"
 #import "PhotoUtil.h"
 
+#import <TXLiveBase.h>
+#import <objc/message.h>
+
 #define BUTTON_PREVIEW_SIZE         65
 #define BUTTON_CONTROL_SIZE         40
 
@@ -134,7 +137,15 @@
 {
     if(startPlay == YES){
         [_voidPlayer setupVideoWidget:CGRectMake(0, 0, 0, 0) containView:_videoPreview insertIndex:0];
-        [_voidPlayer startPlay:_videoPath type:PLAY_TYPE_LOCAL_VIDEO];
+      //  [_voidPlayer startPlay:_videoPath type:PLAY_TYPE_LOCAL_VIDEO];
+        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+        NSString *selString = @"startPlay:type:";
+        if (sdkVersion > 10.7) {
+            selString = @"startLivePlay:type:";
+        
+        }
+       ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (_voidPlayer,
+        NSSelectorFromString(selString),_videoPath,PLAY_TYPE_LOCAL_VIDEO);
         [_voidPlayer setRenderMode:_renderMode];
     }else{
         [_voidPlayer resume];

@@ -15,6 +15,8 @@
 #import "ColorMacro.h"
 #import "AFNetworking.h"
 #import "AppDelegate.h"
+#import <TXLiveBase.h>
+#import <objc/message.h>
 @interface WebRTCViewController() <UITextFieldDelegate, TXLivePushListener, WebRTCPlayerListener> {
     TXLivePush               *_livePusher;
     NSMutableDictionary      *_livePlayerDic;  // [userID, player]
@@ -711,8 +713,16 @@
     }
     
     [player setupVideoWidget:CGRectZero containView:playerView insertIndex:0];
-    [player startPlay:playUrl type:PLAY_TYPE_LIVE_RTMP_ACC];
+    //[player startPlay:playUrl type:PLAY_TYPE_LIVE_RTMP_ACC];
     
+    float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+    NSString *selString = @"startPlay:type:";
+    if (sdkVersion > 10.7) {
+        selString = @"startLivePlay:type:";
+    
+    }
+   ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (player,
+    NSSelectorFromString(selString),playUrl,PLAY_TYPE_LIVE_RTMP_ACC);
     [self relayout];
 }
 

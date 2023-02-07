@@ -5,7 +5,8 @@
 #import "MBProgressHUD.h"
 #import "SmallButton.h"
 #import "PhotoUtil.h"
-
+#import <TXLiveBase.h>
+#import <objc/message.h>
 #define BUTTON_PREVIEW_SIZE         65
 #define BUTTON_CONTROL_SIZE         40
 
@@ -129,7 +130,15 @@
 {
     if(startPlay == YES){
         [_vodPlayer setupVideoWidget:_videoPreview insertIndex:0];
-        [_vodPlayer startPlay:_videoPath];
+      //  [_vodPlayer startPlay:_videoPath];
+        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+        NSString *selString = @"startPlay:";
+        if (sdkVersion > 10.7) {
+            selString = @"startVodPlay:";
+        
+        }
+        ((int (*) (id, SEL, NSString *) )objc_msgSend) (_vodPlayer,
+        NSSelectorFromString(selString),_videoPath);
         [_vodPlayer setRenderMode:_renderMode];
     }else{
         [_vodPlayer resume];

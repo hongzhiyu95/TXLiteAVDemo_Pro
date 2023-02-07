@@ -11,6 +11,8 @@
 #import "TXBitrateView.h"
 #import "TXPlayerAuthParams.h"
 #import "AppDelegate.h"
+#import <TXLiveBase.h>
+#import <objc/message.h>
 #define TEST_MUTE   0
 
 #define RTMP_URL    @"请输入或扫二维码获取播放地址"//请输入或扫二维码获取播放地址"
@@ -488,7 +490,15 @@ TXBitrateViewDelegate
         
         
 //                _txVodPlayer.isAutoPlay = NO;
-        int result = [_txVodPlayer startPlay:playUrl];
+        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+        NSString *selString = @"startPlay:";
+        if (sdkVersion > 10.7) {
+            selString = @"startVodPlay:";
+        
+        }
+        int result = ((int (*) (id, SEL, NSString *) )objc_msgSend) (_txVodPlayer,
+        NSSelectorFromString(selString),playUrl);
+       // int result = [_txVodPlayer startPlay:playUrl];
         if( result != 0)
         {
             NSLog(@"播放器启动失败");

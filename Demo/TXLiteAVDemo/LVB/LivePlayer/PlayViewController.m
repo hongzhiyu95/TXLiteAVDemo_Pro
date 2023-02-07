@@ -15,7 +15,8 @@
 #import "TCHttpUtil.h"
 #import "TRTCHEVCDecoderFactory.h"
 #import "TXliveBase.h"
-
+#import <TXLiveBase.h>
+#import <objc/message.h>
 #define PLAY_URL    @"请输入或扫二维码获取播放地址"
 
 #define CACHE_TIME_FAST             1.0f
@@ -443,8 +444,16 @@ typedef NS_ENUM(NSInteger, ENUM_TYPE_CACHE_STRATEGY) {
     [_player setupVideoWidget:CGRectZero containView:_videoView insertIndex:0];
     
     
-    int ret = [_player startPlay:playUrl type:_playType];
+    // [_player startPlay:playUrl type:_playType];
+    float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+    NSString *selString = @"startPlay:type:";
+    if (sdkVersion > 10.7) {
+        selString = @"startLivePlay:type:";
     
+    }
+    int ret = ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (_player,
+    NSSelectorFromString(selString),playUrl,PLAY_TYPE_LIVE_FLV);
+   // _player startLivePlay:<#(NSString *)#> type:<#(TX_Enum_PlayType)#>
     frame = CGRectMake(0, 0, self.view.bounds.size.width, self.view.bounds.size.height);
     [UIView animateWithDuration:0.4 animations:^{
         _videoView.frame = frame;

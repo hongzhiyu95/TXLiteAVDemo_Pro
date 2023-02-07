@@ -14,7 +14,8 @@
 #import "IMMsgManager.h"
 #import "RoomUtil.h"
 #import <pthread.h>
-
+#import <TXLiveBase.h>
+#import <objc/message.h>
 @interface MLVBProxy : NSProxy {
     MLVBLiveRoom *_object;
 }
@@ -506,7 +507,15 @@ static pthread_mutex_t sharedInstanceLock;
                         playConfig.maxAutoAdjustCacheTime = 2.0f;
                         [player setupVideoWidget:CGRectZero containView:view insertIndex:0];
                         [player setConfig:playConfig];
-                        [player startPlay:self.roomInfo.mixedPlayURL type:[self getPlayType:self.roomInfo.mixedPlayURL]];
+                       
+                        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+                        NSString *selString = @"startPlay:type:";
+                        if (sdkVersion > 10.7) {
+                            selString = @"startLivePlay:type:";
+                        
+                        }
+                       ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (player,
+                        NSSelectorFromString(selString),self.roomInfo.mixedPlayURL,[self getPlayType:self.roomInfo.mixedPlayURL]);
                         [player setLogViewMargin:UIEdgeInsetsMake(120, 10, 60, 10)];
                     });
                     
@@ -748,7 +757,15 @@ static pthread_mutex_t sharedInstanceLock;
                     dispatch_async(dispatch_get_main_queue(), ^{
                         NSAssert(self.roomCreatorPlayerURL, @"empty acc url");
                         // 播放大主播的直播流地址，注意type是 PLAY_TYPE_LIVE_RTMP_ACC
-                        [player startPlay:self.roomCreatorPlayerURL type:PLAY_TYPE_LIVE_RTMP_ACC];
+                  
+                        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+                        NSString *selString = @"startPlay:type:";
+                        if (sdkVersion > 10.7) {
+                            selString = @"startLivePlay:type:";
+                        
+                        }
+                       ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (player,
+                        NSSelectorFromString(selString),self.roomCreatorPlayerURL,PLAY_TYPE_LIVE_RTMP_ACC);
                     });
                 }
                 
@@ -799,7 +816,15 @@ static pthread_mutex_t sharedInstanceLock;
                 playConfig.minAutoAdjustCacheTime = 2.0f;
                 playConfig.maxAutoAdjustCacheTime = 2.0f;
                 [bigPlayer setConfig:playConfig];
-                [bigPlayer startPlay:self.roomInfo.mixedPlayURL type:[self getPlayType:self.roomInfo.mixedPlayURL]];
+               // [bigPlayer startPlay:self.roomInfo.mixedPlayURL type:[self getPlayType:self.roomInfo.mixedPlayURL]];
+                float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+                NSString *selString = @"startPlay:type:";
+                if (sdkVersion > 10.7) {
+                    selString = @"startLivePlay:type:";
+                
+                }
+               ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (bigPlayer,
+                NSSelectorFromString(selString),self.roomInfo.mixedPlayURL,[self getPlayType:self.roomInfo.mixedPlayURL]);
                 if (self->_inBackground == YES) {
                     [bigPlayer pause];
                 }
@@ -1306,7 +1331,15 @@ typedef void (^ILoginCompletionCallback)(int errCode, NSString *errMsg, NSString
     TXLivePlayer *player = playerWrapper.player;
     dispatch_async(dispatch_get_main_queue(), ^{
         [player setupVideoWidget:CGRectZero containView:view insertIndex:0];
-        [player startPlay:playUrl type:PLAY_TYPE_LIVE_RTMP_ACC];
+       // [player startPlay:playUrl type:PLAY_TYPE_LIVE_RTMP_ACC];
+        float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+        NSString *selString = @"startPlay:type:";
+        if (sdkVersion > 10.7) {
+            selString = @"startLivePlay:type:";
+        
+        }
+       ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (player,
+        NSSelectorFromString(selString),playUrl,PLAY_TYPE_LIVE_RTMP_ACC);
     });
 }
 

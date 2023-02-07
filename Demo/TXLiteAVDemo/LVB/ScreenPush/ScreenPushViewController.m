@@ -18,7 +18,8 @@
 #import "TXLivePush.h"
 #import "AddressBarController.h"
 #import "AppDelegate.h"
-
+#import <TXLiveBase.h>
+#import <objc/message.h>
 
 @interface ScreenPushViewController () <AddressBarControllerDelegate, ScanQRDelegate, TXLivePushListener
 #ifndef DISABLE_VOD
@@ -196,7 +197,15 @@
     [_vodPlayer setIsAutoPlay:YES];
 //    [_vodPlayer setLoop:YES];
     [_vodPlayer setupVideoWidget:_playerView insertIndex:0];
-    [_vodPlayer startPlay:@"http://1252463788.vod2.myqcloud.com/95576ef5vodtransgzp1252463788/1bfa444e7447398156520498412/v.f30.mp4"];
+   // [_vodPlayer startPlay:@"http://1252463788.vod2.myqcloud.com/95576ef5vodtransgzp1252463788/1bfa444e7447398156520498412/v.f30.mp4"];
+    float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+    NSString *selString = @"startPlay:";
+    if (sdkVersion > 10.7) {
+        selString = @"startVodPlay:";
+    
+    }
+    int result = ((int (*) (id, SEL, NSString *) )objc_msgSend) (_vodPlayer,
+    NSSelectorFromString(selString),@"http://1252463788.vod2.myqcloud.com/95576ef5vodtransgzp1252463788/1bfa444e7447398156520498412/v.f30.mp4");
     _vodPlayer.vodDelegate = self;
 #endif
 }

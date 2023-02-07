@@ -31,6 +31,10 @@
 		2B5667A3289BE129006F00B0 /* TXFFmpeg.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */; };
 		2B5667A4289BE129006F00B0 /* TXLiteAVSDK_Professional.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B35CD8F2BD7C656AF9E34A9 /* TXLiteAVSDK_Professional.framework */; };
 		2B5667A8289BE129006F00B0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
+		2BB23D5029926E29003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
+		2BB23D5329926E35003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
+		2BB23D5429926E99003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
+		2BB23D5529926EA9003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
 		2BFD9F282844840400F79D6B /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855421EE8FDDA00EE47D7 /* VideoToolbox.framework */; };
 		2BFD9F2D2844841900F79D6B /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
 		2BFD9F2E2844841A00F79D6B /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -1019,6 +1023,7 @@
 				40091FAF1F4FCBBE009B882D /* libiconv.tbd in Frameworks */,
 				456A68DC225CCDB400609884 /* ImSDK.framework in Frameworks */,
 				2BFD9F322844846800F79D6B /* MetalKit.framework in Frameworks */,
+				2BB23D5029926E29003E416C /* CoreTelephony.framework in Frameworks */,
 				40091FB01F4FCBBE009B882D /* libz.tbd in Frameworks */,
 				40FFC382259C839700AD7917 /* libhevcdec.a in Frameworks */,
 				40091FB11F4FCBBE009B882D /* libc++.tbd in Frameworks */,
@@ -1033,6 +1038,7 @@
 				40091FBA1F4FCBBE009B882D /* Accelerate.framework in Frameworks */,
 				2BFD9F2F2844841A00F79D6B /* TXFFmpeg.xcframework in Frameworks */,
 				6A3105E222687996002F6115 /* libmtasdk.a in Frameworks */,
+				2BB23D5329926E35003E416C /* SystemConfiguration.framework in Frameworks */,
 				2B5667A4289BE129006F00B0 /* TXLiteAVSDK_Professional.framework in Frameworks */,
 				40091FBB1F4FCBBE009B882D /* Security.framework in Frameworks */,
 				40091FBC1F4FCBBE009B882D /* AssetsLibrary.framework in Frameworks */,
@@ -1051,9 +1057,11 @@
 				21700DDC2555B10800C5F2FF /* Accelerate.framework in Frameworks */,
 				915AD3BE20E5EC5F00362CC2 /* libsqlite3.tbd in Frameworks */,
 				D6D9E39120D286C700B6D607 /* Accelerate.framework in Frameworks */,
+				2BB23D5529926EA9003E416C /* SystemConfiguration.framework in Frameworks */,
 				2BFD9F34284484A200F79D6B /* Metal.framework in Frameworks */,
 				D6D9E39020D286C100B6D607 /* libz.tbd in Frameworks */,
 				D6D9E38520D2862500B6D607 /* libresolv.tbd in Frameworks */,
+				2BB23D5429926E99003E416C /* CoreTelephony.framework in Frameworks */,
 				D6D9E38620D2862500B6D607 /* libc++.tbd in Frameworks */,
 				2BFD9F3E2844854D00F79D6B /* GLKit.framework in Frameworks */,
 				2BFD9F37284484DB00F79D6B /* TXSoundTouch.xcframework in Frameworks */,

@@ -12,7 +12,8 @@
 */
 
 #import "TRTCCdnPlayerManager.h"
-
+#import <TXLiveBase.h>
+#import <objc/message.h>
 @interface TRTCCdnPlayerManager()
 
 @property (strong, nonatomic) TRTCCdnPlayerConfig *config;
@@ -51,7 +52,15 @@
 - (void)startPlay:(NSString *)url {
     [self applyConfigToPlayer];
     self.player.isAutoPlay = NO;
-    [self.player startPlay:url type:PLAY_TYPE_LIVE_FLV];
+ //   [self.player startPlay:url type:PLAY_TYPE_LIVE_FLV];
+    float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
+    NSString *selString = @"startPlay:type:";
+    if (sdkVersion > 10.7) {
+        selString = @"startLivePlay:type:";
+    
+    }
+   ((int (*) (id, SEL, NSString *,TX_Enum_PlayType) )objc_msgSend) (self.player,
+    NSSelectorFromString(selString),url,PLAY_TYPE_LIVE_FLV);
 }
 
 - (void)stopPlay {
