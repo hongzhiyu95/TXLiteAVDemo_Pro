@@ -6,7 +6,7 @@
 
 #import <UIKit/UIKit.h>
 #import "TXLiveSDKTypeDef.h"
-
+#import <V2TXLiveDef.h>
 @class PushSettingViewController;
 
 @protocol PushSettingDelegate <NSObject>

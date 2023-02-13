@@ -359,7 +359,14 @@ typedef void(^SureAction)(void);
     }
     return VIDEO_QUALITY_SUPER_DEFINITION;
 }
-
+//+ (V2TXLiveVideoEncoderParam *)getV2VideoQuality {
+//    NSString *key = [PushSettingViewController getKey:TAG_QUALITY];
+//    NSNumber *d = [[NSUserDefaults standardUserDefaults] objectForKey:key];
+//    if (d != nil) {
+//        return [d intValue];
+//    }
+//    return V2TXLiveVideoResolution1920x1080;
+//}
 + (TXReverbType)getReverbType {
     NSString *key = [PushSettingViewController getKey:TAG_REVERB];
     NSNumber *d = [[NSUserDefaults standardUserDefaults] objectForKey:key];

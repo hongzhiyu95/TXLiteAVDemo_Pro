@@ -8,7 +8,7 @@
 
 #import "MainViewController.h"
 #ifdef ENABLE_PUSH
-#import "CameraPushViewController.h"
+#import "V2CameraPushViewController.h"
 #endif
 #ifdef ENABLE_PLAY
 #import "PlayViewController.h"
@@ -102,18 +102,27 @@ UIAlertViewDelegate
 #endif
         
 #ifdef ENABLE_PUSH
-        scellInfo = [CellInfo cellInfoWithTitle:@"摄像头推流"
+        scellInfo = [CellInfo cellInfoWithTitle:@"V1摄像头推流"
                        controllerClassName:@"CameraPushViewController"];
         [subCells addObject:scellInfo];
         
 #endif
+#ifdef ENABLE_V2PUSH
+        scellInfo = [CellInfo cellInfoWithTitle:@"V2摄像头推流"
+                       controllerClassName:@"V2CameraPushViewController"];
+        [subCells addObject:scellInfo];
         
+#endif
 #ifdef ENABLE_PLAY
-        scellInfo = [CellInfo cellInfoWithTitle:@"直播拉流"
+        scellInfo = [CellInfo cellInfoWithTitle:@"V1直播拉流"
                        controllerClassName:@"PlayViewController"];
         [subCells addObject:scellInfo];
 #endif
-        
+#ifdef ENABLE_V2PLAY
+        scellInfo = [CellInfo cellInfoWithTitle:@"V2直播拉流"
+                       controllerClassName:@"PlayViewController"];
+        [subCells addObject:scellInfo];
+#endif
 #if defined(ENABLE_PUSH) && defined(ENABLE_PLAY)
         scellInfo = [CellInfo cellInfoWithTitle:@"录屏直播"
                               controllerClassName:@"ScreenPushViewController"];

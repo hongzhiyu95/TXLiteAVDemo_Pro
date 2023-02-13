@@ -59,8 +59,8 @@
         UISlider *bgmVolumeSlider = [[UISlider alloc] initWithFrame:CGRectMake(bgmVolumeLabel.right, bgmVolumeLabel.top,
                                                                                self.width - bgmVolumeLabel.right - offsetX, height)];
         bgmVolumeSlider.minimumValue = 0;
-        bgmVolumeSlider.maximumValue = 2;
-        bgmVolumeSlider.value = 1;
+        bgmVolumeSlider.maximumValue = 150;
+        bgmVolumeSlider.value = 100;
         bgmVolumeSlider.continuous = NO;
         [bgmVolumeSlider addTarget:self action:@selector(bgmVolume:) forControlEvents:UIControlEventValueChanged];
         

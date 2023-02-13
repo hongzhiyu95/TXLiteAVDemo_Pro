@@ -33,6 +33,7 @@
 		2B5667A8289BE129006F00B0 /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
 		2BA8A91329927E8000F7C666 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8A91229927E8000F7C666 /* ImSDK.framework */; };
 		2BA8A91429927E8000F7C666 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8A91229927E8000F7C666 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2BA8A9292999F7F700F7C666 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */; };
 		2BB23D5029926E29003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
 		2BB23D5329926E35003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
 		2BB23D5429926E99003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
@@ -268,7 +269,7 @@
 		D541373622795FAA006D9C9D /* MLVBLiveRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292F62272BB1200C052B7 /* MLVBLiveRoom.m */; };
 		D541373722795FAA006D9C9D /* MLVBLiveRoomDef.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292F42272BB1100C052B7 /* MLVBLiveRoomDef.m */; };
 		D541373822795FAA006D9C9D /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FA2272BB1C00C052B7 /* PlayViewController.m */; };
-		D541373922795FAA006D9C9D /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FC2272BB2500C052B7 /* CameraPushViewController.m */; };
+		D541373922795FAA006D9C9D /* V2CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FC2272BB2500C052B7 /* V2CameraPushViewController.m */; };
 		D541373A22795FAA006D9C9D /* PushMoreSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50293012272BB2500C052B7 /* PushMoreSettingViewController.m */; };
 		D541373B22795FAA006D9C9D /* PushSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50293052272BB2600C052B7 /* PushSettingViewController.m */; };
 		D541373C22795FAA006D9C9D /* TXCAudioCustomRecorder.m in Sources */ = {isa = PBXBuildFile; fileRef = D50293002272BB2500C052B7 /* TXCAudioCustomRecorder.m */; };
@@ -442,6 +443,8 @@
 		21D67204252B431D007C4B9F /* TRTCCustomerCrypt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TRTCCustomerCrypt.h; sourceTree = "<group>"; };
 		2B5667AC289BE129006F00B0 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ImSDK.framework; sourceTree = "<group>"; };
 		2BA8A91229927E8000F7C666 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = ../SDK/ImSDK.framework; sourceTree = "<group>"; };
+		2BA8A9272999F7F700F7C666 /* CameraPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
+		2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
 		2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = ../SDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = ../SDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		2BFD9F312844846800F79D6B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -944,8 +947,8 @@
 		D50292F62272BB1200C052B7 /* MLVBLiveRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLVBLiveRoom.m; sourceTree = "<group>"; };
 		D50292F92272BB1C00C052B7 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		D50292FA2272BB1C00C052B7 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
-		D50292FC2272BB2500C052B7 /* CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
-		D50292FE2272BB2500C052B7 /* CameraPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
+		D50292FC2272BB2500C052B7 /* V2CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V2CameraPushViewController.m; sourceTree = "<group>"; };
+		D50292FE2272BB2500C052B7 /* V2CameraPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V2CameraPushViewController.h; sourceTree = "<group>"; };
 		D50293002272BB2500C052B7 /* TXCAudioCustomRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXCAudioCustomRecorder.m; sourceTree = "<group>"; };
 		D50293012272BB2500C052B7 /* PushMoreSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PushMoreSettingViewController.m; sourceTree = "<group>"; };
 		D50293022272BB2500C052B7 /* PushMoreSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PushMoreSettingViewController.h; sourceTree = "<group>"; };
@@ -2251,8 +2254,10 @@
 		D50292CD2272BA2A00C052B7 /* CameraPush */ = {
 			isa = PBXGroup;
 			children = (
-				D50292FE2272BB2500C052B7 /* CameraPushViewController.h */,
-				D50292FC2272BB2500C052B7 /* CameraPushViewController.m */,
+				2BA8A9272999F7F700F7C666 /* CameraPushViewController.h */,
+				2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */,
+				D50292FE2272BB2500C052B7 /* V2CameraPushViewController.h */,
+				D50292FC2272BB2500C052B7 /* V2CameraPushViewController.m */,
 				D50293022272BB2500C052B7 /* PushMoreSettingViewController.h */,
 				D50293012272BB2500C052B7 /* PushMoreSettingViewController.m */,
 				D50293042272BB2600C052B7 /* PushSettingViewController.h */,
@@ -2726,7 +2731,7 @@
 				12033DCA23BE18C90088163F /* MJPropertyType.m in Sources */,
 				45E74D9C23B22BCD00C22B31 /* ThemeConfigurator.m in Sources */,
 				D541373822795FAA006D9C9D /* PlayViewController.m in Sources */,
-				D541373922795FAA006D9C9D /* CameraPushViewController.m in Sources */,
+				D541373922795FAA006D9C9D /* V2CameraPushViewController.m in Sources */,
 				E28B53B1262EC00B0075EF34 /* LivePushSampleHandler.m in Sources */,
 				3F57C552236C1EBC00D4DFCE /* TRTCRemoteUserConfig.m in Sources */,
 				D541373A22795FAA006D9C9D /* PushMoreSettingViewController.m in Sources */,
@@ -2782,6 +2787,7 @@
 				40091F801F4FCBBE009B882D /* QBSlomoIconView.m in Sources */,
 				3F57C598236C1EBC00D4DFCE /* TRTCSettingsMessageCell.m in Sources */,
 				6AB334711FA96543007C8244 /* UIWebView+AFNetworking.m in Sources */,
+				2BA8A9292999F7F700F7C666 /* CameraPushViewController.m in Sources */,
 				3F57C593236C1EBC00D4DFCE /* UISegmentedControl+TRTC.m in Sources */,
 				3F57C5ED236C1EBC00D4DFCE /* TRTCEffectSettingsViewController.m in Sources */,
 				3F57C589236C1EBC00D4DFCE /* UITextField+TRTC.m in Sources */,
@@ -3019,6 +3025,8 @@
 					ENABLE_UGC,
 					ENABLE_AV,
 					ENABLE_TRTC,
+					ENABLE_V2PUSH,
+					ENABLE_V2PLAY,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",
@@ -3147,6 +3155,7 @@
 					ENABLE_UGC,
 					ENABLE_AV,
 					ENABLE_TRTC,
+					ENABLE_V2PUSH,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",
