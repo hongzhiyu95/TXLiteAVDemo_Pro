@@ -11,7 +11,7 @@
 #import "V2CameraPushViewController.h"
 #endif
 #ifdef ENABLE_PLAY
-#import "PlayViewController.h"
+#import "V2PlayViewController.h"
 #ifndef DISABLE_VOD
 #import "PlayVodViewController.h"
 #import "DownloadViewController.h"
@@ -120,7 +120,7 @@ UIAlertViewDelegate
 #endif
 #ifdef ENABLE_V2PLAY
         scellInfo = [CellInfo cellInfoWithTitle:@"V2直播拉流"
-                       controllerClassName:@"PlayViewController"];
+                       controllerClassName:@"V2PlayViewController"];
         [subCells addObject:scellInfo];
 #endif
 #if defined(ENABLE_PUSH) && defined(ENABLE_PLAY)

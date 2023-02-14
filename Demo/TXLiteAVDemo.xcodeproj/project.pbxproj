@@ -34,6 +34,7 @@
 		2BA8A91329927E8000F7C666 /* ImSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8A91229927E8000F7C666 /* ImSDK.framework */; };
 		2BA8A91429927E8000F7C666 /* ImSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BA8A91229927E8000F7C666 /* ImSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2BA8A9292999F7F700F7C666 /* CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */; };
+		2BA8A932299B787E00F7C666 /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BA8A931299B787E00F7C666 /* PlayViewController.m */; };
 		2BB23D5029926E29003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
 		2BB23D5329926E35003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
 		2BB23D5429926E99003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
@@ -268,7 +269,7 @@
 		D541373522795FAA006D9C9D /* LiveRoomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292E32272BB0600C052B7 /* LiveRoomTableViewCell.m */; };
 		D541373622795FAA006D9C9D /* MLVBLiveRoom.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292F62272BB1200C052B7 /* MLVBLiveRoom.m */; };
 		D541373722795FAA006D9C9D /* MLVBLiveRoomDef.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292F42272BB1100C052B7 /* MLVBLiveRoomDef.m */; };
-		D541373822795FAA006D9C9D /* PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FA2272BB1C00C052B7 /* PlayViewController.m */; };
+		D541373822795FAA006D9C9D /* V2PlayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FA2272BB1C00C052B7 /* V2PlayViewController.m */; };
 		D541373922795FAA006D9C9D /* V2CameraPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50292FC2272BB2500C052B7 /* V2CameraPushViewController.m */; };
 		D541373A22795FAA006D9C9D /* PushMoreSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50293012272BB2500C052B7 /* PushMoreSettingViewController.m */; };
 		D541373B22795FAA006D9C9D /* PushSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D50293052272BB2600C052B7 /* PushSettingViewController.m */; };
@@ -445,6 +446,8 @@
 		2BA8A91229927E8000F7C666 /* ImSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK.framework; path = ../SDK/ImSDK.framework; sourceTree = "<group>"; };
 		2BA8A9272999F7F700F7C666 /* CameraPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraPushViewController.h; sourceTree = "<group>"; };
 		2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
+		2BA8A930299B787E00F7C666 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
+		2BA8A931299B787E00F7C666 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
 		2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = ../SDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = ../SDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		2BFD9F312844846800F79D6B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -945,8 +948,8 @@
 		D50292F42272BB1100C052B7 /* MLVBLiveRoomDef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLVBLiveRoomDef.m; sourceTree = "<group>"; };
 		D50292F52272BB1200C052B7 /* MLVBLiveRoomDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MLVBLiveRoomDelegate.h; sourceTree = "<group>"; };
 		D50292F62272BB1200C052B7 /* MLVBLiveRoom.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MLVBLiveRoom.m; sourceTree = "<group>"; };
-		D50292F92272BB1C00C052B7 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
-		D50292FA2272BB1C00C052B7 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		D50292F92272BB1C00C052B7 /* V2PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V2PlayViewController.h; sourceTree = "<group>"; };
+		D50292FA2272BB1C00C052B7 /* V2PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V2PlayViewController.m; sourceTree = "<group>"; };
 		D50292FC2272BB2500C052B7 /* V2CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = V2CameraPushViewController.m; sourceTree = "<group>"; };
 		D50292FE2272BB2500C052B7 /* V2CameraPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = V2CameraPushViewController.h; sourceTree = "<group>"; };
 		D50293002272BB2500C052B7 /* TXCAudioCustomRecorder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TXCAudioCustomRecorder.m; sourceTree = "<group>"; };
@@ -2284,8 +2287,10 @@
 		D50292CF2272BA3F00C052B7 /* LivePlayer */ = {
 			isa = PBXGroup;
 			children = (
-				D50292F92272BB1C00C052B7 /* PlayViewController.h */,
-				D50292FA2272BB1C00C052B7 /* PlayViewController.m */,
+				2BA8A930299B787E00F7C666 /* PlayViewController.h */,
+				2BA8A931299B787E00F7C666 /* PlayViewController.m */,
+				D50292F92272BB1C00C052B7 /* V2PlayViewController.h */,
+				D50292FA2272BB1C00C052B7 /* V2PlayViewController.m */,
 				4022928E25885DD40051E1FD /* TRTCHEVCDecoderFactory.h */,
 				4022928F25885DD40051E1FD /* TRTCHEVCDecoderFactory.mm */,
 			);
@@ -2730,7 +2735,7 @@
 				D541373722795FAA006D9C9D /* MLVBLiveRoomDef.m in Sources */,
 				12033DCA23BE18C90088163F /* MJPropertyType.m in Sources */,
 				45E74D9C23B22BCD00C22B31 /* ThemeConfigurator.m in Sources */,
-				D541373822795FAA006D9C9D /* PlayViewController.m in Sources */,
+				D541373822795FAA006D9C9D /* V2PlayViewController.m in Sources */,
 				D541373922795FAA006D9C9D /* V2CameraPushViewController.m in Sources */,
 				E28B53B1262EC00B0075EF34 /* LivePushSampleHandler.m in Sources */,
 				3F57C552236C1EBC00D4DFCE /* TRTCRemoteUserConfig.m in Sources */,
@@ -2762,6 +2767,7 @@
 				918BFA7C2021AA8C001857DA /* UIButton+WebCache.m in Sources */,
 				5151BF38224518A5003E66BA /* CustomAudioFileReader.m in Sources */,
 				12033DF223BE18C90088163F /* MJFoundation.m in Sources */,
+				2BA8A932299B787E00F7C666 /* PlayViewController.m in Sources */,
 				3F57C539236C1EBC00D4DFCE /* TRTCRemoteUserListViewController.m in Sources */,
 				F15226182160A42E00645A99 /* TRTCNewViewController.m in Sources */,
 				40091F781F4FCBBE009B882D /* UIButton+Glossy.m in Sources */,
