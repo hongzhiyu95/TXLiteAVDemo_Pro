@@ -343,8 +343,19 @@
 //    [pusher setEnableClockOverlay:[PushMoreSettingViewController isEnableDelayCheck]];
 //
 //    [pusher setConfig:config];
-    [pusher setVideoQuality:_quaility];
+  //  [pusher setVideoQuality:_quaility];
+    NSDictionary *qualityDic = @{@"videoWidth":@(544),@"videoHeight":@960,@"videoFps":@15,@"videoBitrate":@2000,@"videoGop":@1};
+        NSString *qualityJson = [self dictionaryToJson:qualityDic];
+    [pusher setProperty:@"setVideoQualityEx" value:qualityJson];
     return pusher;
+}
+- (NSString*)dictionaryToJson:(NSDictionary *)dic
+
+{
+    NSError *parseError = nil;
+    NSData *jsonData = [NSJSONSerialization dataWithJSONObject:dic options:NSJSONWritingPrettyPrinted error:&parseError];
+    
+    return [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark - 控件响应函数
@@ -504,6 +515,7 @@
         [_pusher setObserver:nil];
         [_pusher stopCamera];
         [_pusher stopPush];
+        
     }
 #ifdef ENABLE_CUSTOM_MODE_AUDIO_CAPTURE
     [[CustomAudioFileReader sharedInstance] stop];
@@ -559,7 +571,7 @@
             NSString *rtmpPlayUrl = resultDict[@"url_play_rtmp"];
             NSString *flvPlayUrl = resultDict[@"url_play_flv"];
             NSString *hlsPlayUrl = resultDict[@"url_play_hls"];
-            NSString *accPlayUrl = resultDict[@"url_play_acc"];
+            NSString *lebPlayUrl = resultDict[@"url_play_leb"];
             
             controller.text = pusherUrl;
             NSString *(^c)(NSString *x, NSString *y) = ^(NSString *x, NSString *y) {
@@ -568,9 +580,9 @@
             controller.qrStrings = @[c(@"rtmp", rtmpPlayUrl),
                                      c(@"flv", flvPlayUrl),
                                      c(@"hls", hlsPlayUrl),
-                                     c(@"低延时", accPlayUrl)];
+                                     c(@"webRTC", lebPlayUrl)];
             
-            NSString* playUrls = [NSString stringWithFormat:@"rtmp播放地址:%@\n\nflv播放地址:%@\n\nhls播放地址:%@\n\n低延时播放地址:%@", rtmpPlayUrl, flvPlayUrl, hlsPlayUrl, accPlayUrl];
+            NSString* playUrls = [NSString stringWithFormat:@"rtmp播放地址:%@\n\nflv播放地址:%@\n\nhls播放地址:%@\n\nwebRTC播放地址:%@", rtmpPlayUrl, flvPlayUrl, hlsPlayUrl, lebPlayUrl];
             UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
             pasteboard.string = playUrls;
             
@@ -944,6 +956,7 @@
 }
 
 - (void)onMicVolume:(float)volume {
+    
     [[_pusher getAudioEffectManager]setVoiceVolume:volume];
 }
 

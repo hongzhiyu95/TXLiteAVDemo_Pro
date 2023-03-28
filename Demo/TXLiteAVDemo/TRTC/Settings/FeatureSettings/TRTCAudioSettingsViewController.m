@@ -140,7 +140,20 @@
 
 - (void)onEnableHandsFree:(BOOL)isOn {
     TRTCAudioRoute route = isOn ? TRTCAudioModeSpeakerphone : TRTCAudioModeEarpiece;
-    [self.trtcCloudManager setAudioRoute:route];
+//    [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:101 error:nil];
+//    [[AVAudioSession sharedInstance]setActive:YES error:nil];
+    if (route == TRTCAudioModeSpeakerphone){
+        
+//
+        [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideSpeaker error:nil];
+        [[AVAudioSession sharedInstance]setActive:YES error:nil];
+    }else{
+//        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:109 error:nil];
+        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:101 error:nil];
+        [[AVAudioSession sharedInstance] overrideOutputAudioPort:AVAudioSessionPortOverrideNone error:nil];
+        [[AVAudioSession sharedInstance]setActive:YES error:nil];
+    }
+    //[self.trtcCloudManager setAudioRoute:route];
 }
 
 - (void)onEnableVolumeEvaluation:(BOOL)isOn {

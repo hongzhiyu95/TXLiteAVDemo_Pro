@@ -470,6 +470,10 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置混流自定义流ID
 /// @param streamId 混流流ID
 - (void)setMixStreamId:(NSString * _Nullable)streamId;
+/// 设置发布媒体流roomid
+/// @param roomid roomid
+-(void)setPublishMediaStreamWithRoomId:(NSString *)roomid;
+
 
 #pragma mark - Message
 

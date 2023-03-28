@@ -92,4 +92,14 @@ char pinyinFirstLetter(unsigned short hanzi);
 //递归计算符合规定的文本长度
 - (NSString *)cutBeyondTextInLength:(NSInteger)maxLenth;
 
+
+
+
++ (NSString *)convertToJsonData:(NSDictionary *)dict;
+
++ (NSString *)generateRandomRoomNumber;
+
++ (NSString *)generateRandomUserId;
+
++ (NSString *)generateRandomStreamId;
 @end

@@ -122,7 +122,12 @@ UIAlertViewDelegate
         scellInfo = [CellInfo cellInfoWithTitle:@"V2直播拉流"
                        controllerClassName:@"V2PlayViewController"];
         [subCells addObject:scellInfo];
+        scellInfo = [CellInfo cellInfoWithTitle:@"V2直播PK"
+                       controllerClassName:@"LivePkFindPkUserController"];
+        [subCells addObject:scellInfo];
 #endif
+
+
 #if defined(ENABLE_PUSH) && defined(ENABLE_PLAY)
         scellInfo = [CellInfo cellInfoWithTitle:@"录屏直播"
                               controllerClassName:@"ScreenPushViewController"];
@@ -320,7 +325,7 @@ UIAlertViewDelegate
     
     //副标题
     UILabel* lbSubHead = [[UILabel alloc] initWithFrame:CGRectMake(originX, lbHeadLine.frame.origin.y + lbHeadLine.frame.size.height + 15, width, 30)];
-    NSString *version = [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *version = [TXLiveBase getSDKVersionStr];
     lbSubHead.text = [NSString stringWithFormat:@"视频云工具包 v%@", version];
     lbSubHead.text = [lbSubHead.text stringByAppendingString:@"\n本APP用于展示腾讯视频云终端产品的各类功能"];
     lbSubHead.numberOfLines = 2;

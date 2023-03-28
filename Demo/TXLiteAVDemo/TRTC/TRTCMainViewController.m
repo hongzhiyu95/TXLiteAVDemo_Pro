@@ -769,7 +769,14 @@ static NSString * const ScreenCapturePaused = @"📱屏幕分享(已暂停)";
     [self toastTip:[NSString stringWithFormat:@"切换到%@身份",
                     self.param.role == TRTCRoleAnchor ? @"主播" : @"观众"]];
 }
-
+-(void)onConnectionLost
+{
+    
+}
+-(void)onConnectionRecovery
+{
+    
+}
 - (void)onConnectOtherRoom:(NSString *)userId errCode:(TXLiteAVError)errCode errMsg:(NSString *)errMsg {
     [self toastTip:[NSString stringWithFormat:@"连麦结果:%u %@", errCode, errMsg]];
     if (errCode != 0) {
@@ -807,7 +814,9 @@ static NSString * const ScreenCapturePaused = @"📱屏幕分享(已暂停)";
         [self relayout];
     }
 }
-
+- (void)onStartPublishMediaStream:(NSString *)taskId code:(int)code message:(NSString *)message extraInfo:(NSDictionary *)extraInfo{
+    NSLog(@"onStartPublishMediaStream:%@ code:%@, message:%@",taskId,@(code),message);
+}
 /**
  * 有新的用户加入了当前视频房间
  */
@@ -929,6 +938,7 @@ static NSString * const ScreenCapturePaused = @"📱屏幕分享(已暂停)";
 }
 
 - (void)onNetworkQuality:(TRTCQualityInfo *)localQuality remoteQuality:(NSArray<TRTCQualityInfo *> *)remoteQuality {
+    
     [_localView setNetworkIndicatorImage:[self imageForNetworkQuality:localQuality.quality]];
     for (TRTCQualityInfo* qualityInfo in remoteQuality) {
         NSArray<TRTCRenderViewKey *> *keys = [renderViewKeymanager remoteRenderKeysFromUserId:qualityInfo.userId roomId:self.trtcCloudManager.params.roomId strRoomId:self.trtcCloudManager.params.strRoomId];

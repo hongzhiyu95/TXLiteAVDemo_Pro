@@ -42,6 +42,7 @@
                                                 action:^(NSInteger index) {
             [wSelf onSelectBackgroundImage:index];
         }],
+       
         [[TRTCSettingsMessageItem alloc] initWithTitle:@"混流ID"
                                            placeHolder:@"自定义混流ID"
                                                content:nil
@@ -49,6 +50,14 @@
                                                 action:^(NSString *content) {
             [wSelf setMixStreamId:content];
         }],
+        [[TRTCSettingsMessageItem alloc] initWithTitle:@"发布媒体流"
+                                           placeHolder:@"目标房间号"
+                                               content:nil
+                                           actionTitle:@"发布"
+                                                action:^(NSString *content) {
+            [wSelf setPublishMeidaStreamWithRoomID:content];
+        }],
+    
     ];
     
     [self setupSubviews];
@@ -84,6 +93,9 @@
     [self.trtcCloudManager setMixStreamId:streamId];
 }
 
+-(void)setPublishMeidaStreamWithRoomID:(NSString *) roomid{
+    [self.trtcCloudManager setPublishMediaStreamWithRoomId:roomid];
+}
 - (IBAction)onClickShareButton:(UIButton *)button{
     NSString *shareUrl = [self.trtcCloudManager getCdnUrlOfUser:self.trtcCloudManager.params.userId];
     UIActivityViewController *activityView = [[UIActivityViewController alloc]

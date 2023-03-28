@@ -39,6 +39,20 @@
 		2BB23D5329926E35003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
 		2BB23D5429926E99003E416C /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855441EE8FDE100EE47D7 /* CoreTelephony.framework */; };
 		2BB23D5529926EA9003E416C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855461EE8FDE800EE47D7 /* SystemConfiguration.framework */; };
+		2BBEC0B4299E012500A98FCB /* LivePkAudienceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AA299E012500A98FCB /* LivePkAudienceViewController.m */; };
+		2BBEC0B5299E012500A98FCB /* LivePkUserInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AB299E012500A98FCB /* LivePkUserInputViewController.m */; };
+		2BBEC0B6299E012500A98FCB /* LivePkAnchorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AC299E012500A98FCB /* LivePkAnchorViewController.m */; };
+		2BBEC0B7299E012500A98FCB /* LivePkAnchorViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AD299E012500A98FCB /* LivePkAnchorViewController.xib */; };
+		2BBEC0B8299E012500A98FCB /* LivePkFindPkUserController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AE299E012500A98FCB /* LivePkFindPkUserController.m */; };
+		2BBEC0B9299E012500A98FCB /* LivePkAudienceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEC0AF299E012500A98FCB /* LivePkAudienceViewController.xib */; };
+		2BBEC0BC299E014E00A98FCB /* LiveInputBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0BB299E014E00A98FCB /* LiveInputBaseViewController.m */; };
+		2BBEC0BF299E01E400A98FCB /* LiveLinkOrPkSwitchRoleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0BD299E01E300A98FCB /* LiveLinkOrPkSwitchRoleViewController.m */; };
+		2BBEC0C2299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0C0299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.m */; };
+		2BBEC0C5299E030800A98FCB /* AppLocalized.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0C3299E030800A98FCB /* AppLocalized.m */; };
+		2BBEC0C8299E03F900A98FCB /* URLUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0C6299E03F900A98FCB /* URLUtils.m */; };
+		2BBEC0CB299E048900A98FCB /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBEC0C9299E048900A98FCB /* UIColor+Hex.m */; };
+		2BBEC0D3299E155000A98FCB /* LiveInputBaseViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEC0D2299E155000A98FCB /* LiveInputBaseViewController.xib */; };
+		2BBEC0D7299E17F100A98FCB /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 2BBEC0D5299E17F100A98FCB /* Localizable.strings */; };
 		2BFD9F282844840400F79D6B /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40F855421EE8FDDA00EE47D7 /* VideoToolbox.framework */; };
 		2BFD9F2D2844841900F79D6B /* TXSoundTouch.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; };
 		2BFD9F2E2844841A00F79D6B /* TXSoundTouch.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -448,6 +462,31 @@
 		2BA8A9282999F7F700F7C666 /* CameraPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraPushViewController.m; sourceTree = "<group>"; };
 		2BA8A930299B787E00F7C666 /* PlayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayViewController.h; sourceTree = "<group>"; };
 		2BA8A931299B787E00F7C666 /* PlayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayViewController.m; sourceTree = "<group>"; };
+		2BBEC0A8299E012500A98FCB /* LivePkAnchorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePkAnchorViewController.h; sourceTree = "<group>"; };
+		2BBEC0A9299E012500A98FCB /* LivePkFindPkUserController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePkFindPkUserController.h; sourceTree = "<group>"; };
+		2BBEC0AA299E012500A98FCB /* LivePkAudienceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePkAudienceViewController.m; sourceTree = "<group>"; };
+		2BBEC0AB299E012500A98FCB /* LivePkUserInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePkUserInputViewController.m; sourceTree = "<group>"; };
+		2BBEC0AC299E012500A98FCB /* LivePkAnchorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePkAnchorViewController.m; sourceTree = "<group>"; };
+		2BBEC0AD299E012500A98FCB /* LivePkAnchorViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivePkAnchorViewController.xib; sourceTree = "<group>"; };
+		2BBEC0AE299E012500A98FCB /* LivePkFindPkUserController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LivePkFindPkUserController.m; sourceTree = "<group>"; };
+		2BBEC0AF299E012500A98FCB /* LivePkAudienceViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LivePkAudienceViewController.xib; sourceTree = "<group>"; };
+		2BBEC0B0299E012500A98FCB /* LivePkUserInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePkUserInputViewController.h; sourceTree = "<group>"; };
+		2BBEC0B1299E012500A98FCB /* LivePkAudienceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LivePkAudienceViewController.h; sourceTree = "<group>"; };
+		2BBEC0BA299E014E00A98FCB /* LiveInputBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveInputBaseViewController.h; sourceTree = "<group>"; };
+		2BBEC0BB299E014E00A98FCB /* LiveInputBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveInputBaseViewController.m; sourceTree = "<group>"; };
+		2BBEC0BD299E01E300A98FCB /* LiveLinkOrPkSwitchRoleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveLinkOrPkSwitchRoleViewController.m; sourceTree = "<group>"; };
+		2BBEC0BE299E01E400A98FCB /* LiveLinkOrPkSwitchRoleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveLinkOrPkSwitchRoleViewController.h; sourceTree = "<group>"; };
+		2BBEC0C0299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LiveLinkOrPkStreamInputViewController.m; sourceTree = "<group>"; };
+		2BBEC0C1299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiveLinkOrPkStreamInputViewController.h; sourceTree = "<group>"; };
+		2BBEC0C3299E030800A98FCB /* AppLocalized.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLocalized.m; sourceTree = "<group>"; };
+		2BBEC0C4299E030800A98FCB /* AppLocalized.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLocalized.h; sourceTree = "<group>"; };
+		2BBEC0C6299E03F900A98FCB /* URLUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLUtils.m; sourceTree = "<group>"; };
+		2BBEC0C7299E03F900A98FCB /* URLUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLUtils.h; sourceTree = "<group>"; };
+		2BBEC0C9299E048900A98FCB /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		2BBEC0CA299E048900A98FCB /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		2BBEC0D1299E129500A98FCB /* TXLiteAVDemoPCH.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TXLiteAVDemoPCH.pch; sourceTree = "<group>"; };
+		2BBEC0D2299E155000A98FCB /* LiveInputBaseViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LiveInputBaseViewController.xib; sourceTree = "<group>"; };
+		2BBEC0D6299E17F100A98FCB /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = Localizable.strings; sourceTree = "<group>"; };
 		2BFD9F2B2844841900F79D6B /* TXSoundTouch.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXSoundTouch.xcframework; path = ../SDK/TXSoundTouch.xcframework; sourceTree = "<group>"; };
 		2BFD9F2C2844841900F79D6B /* TXFFmpeg.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = TXFFmpeg.xcframework; path = ../SDK/TXFFmpeg.xcframework; sourceTree = "<group>"; };
 		2BFD9F312844846800F79D6B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
@@ -1134,6 +1173,46 @@
 			path = ../SDK/ImSDK;
 			sourceTree = "<group>";
 		};
+		2BBEC0A7299E012500A98FCB /* LivePK */ = {
+			isa = PBXGroup;
+			children = (
+				2BBEC0D2299E155000A98FCB /* LiveInputBaseViewController.xib */,
+				2BBEC0C1299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.h */,
+				2BBEC0C0299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.m */,
+				2BBEC0BE299E01E400A98FCB /* LiveLinkOrPkSwitchRoleViewController.h */,
+				2BBEC0BD299E01E300A98FCB /* LiveLinkOrPkSwitchRoleViewController.m */,
+				2BBEC0BA299E014E00A98FCB /* LiveInputBaseViewController.h */,
+				2BBEC0BB299E014E00A98FCB /* LiveInputBaseViewController.m */,
+				2BBEC0A8299E012500A98FCB /* LivePkAnchorViewController.h */,
+				2BBEC0A9299E012500A98FCB /* LivePkFindPkUserController.h */,
+				2BBEC0AA299E012500A98FCB /* LivePkAudienceViewController.m */,
+				2BBEC0AB299E012500A98FCB /* LivePkUserInputViewController.m */,
+				2BBEC0AC299E012500A98FCB /* LivePkAnchorViewController.m */,
+				2BBEC0AD299E012500A98FCB /* LivePkAnchorViewController.xib */,
+				2BBEC0AE299E012500A98FCB /* LivePkFindPkUserController.m */,
+				2BBEC0AF299E012500A98FCB /* LivePkAudienceViewController.xib */,
+				2BBEC0B0299E012500A98FCB /* LivePkUserInputViewController.h */,
+				2BBEC0B1299E012500A98FCB /* LivePkAudienceViewController.h */,
+			);
+			path = LivePK;
+			sourceTree = "<group>";
+		};
+		2BBEC0CD299E060800A98FCB /* PCH */ = {
+			isa = PBXGroup;
+			children = (
+				2BBEC0D1299E129500A98FCB /* TXLiteAVDemoPCH.pch */,
+			);
+			path = PCH;
+			sourceTree = "<group>";
+		};
+		2BBEC0D4299E17CA00A98FCB /* zh-Hans.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				2BBEC0D5299E17F100A98FCB /* Localizable.strings */,
+			);
+			path = "zh-Hans.lproj";
+			sourceTree = "<group>";
+		};
 		3F57C4CC236C1EBB00D4DFCE /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1410,6 +1489,8 @@
 		40F853051EE8FB3800EE47D7 /* TXLiteAVDemo */ = {
 			isa = PBXGroup;
 			children = (
+				2BBEC0D4299E17CA00A98FCB /* zh-Hans.lproj */,
+				2BBEC0CD299E060800A98FCB /* PCH */,
 				45E0528C24762B96008305D5 /* Entitlements */,
 				D50292CC2272BA2100C052B7 /* LVB */,
 				40F853241EE8FC8400EE47D7 /* App */,
@@ -1448,6 +1529,8 @@
 				40F853261EE8FC8400EE47D7 /* AppDelegate.m */,
 				40F853271EE8FC8400EE47D7 /* AppLogMgr.h */,
 				40F853281EE8FC8400EE47D7 /* AppLogMgr.m */,
+				2BBEC0C4299E030800A98FCB /* AppLocalized.h */,
+				2BBEC0C3299E030800A98FCB /* AppLocalized.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -1455,6 +1538,10 @@
 		40F853371EE8FCDF00EE47D7 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				2BBEC0CA299E048900A98FCB /* UIColor+Hex.h */,
+				2BBEC0C9299E048900A98FCB /* UIColor+Hex.m */,
+				2BBEC0C7299E03F900A98FCB /* URLUtils.h */,
+				2BBEC0C6299E03F900A98FCB /* URLUtils.m */,
 				45E74D9523B2282000C22B31 /* Theme */,
 				4579C41423AC8082005ECC1C /* TCBeautyPanel */,
 				45AEA42D2297ED0500E42818 /* CustomCapture */,
@@ -2249,6 +2336,7 @@
 				D50292D02272BA4A00C052B7 /* LiveRoom */,
 				D50292CF2272BA3F00C052B7 /* LivePlayer */,
 				D50292CE2272BA3600C052B7 /* ScreenPush */,
+				2BBEC0A7299E012500A98FCB /* LivePK */,
 				D50292CD2272BA2A00C052B7 /* CameraPush */,
 			);
 			path = LVB;
@@ -2653,6 +2741,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				91A1D660214779AD00EA9A19 /* SuperPlayer.bundle in Resources */,
+				2BBEC0B7299E012500A98FCB /* LivePkAnchorViewController.xib in Resources */,
 				45111F2A23AB6667005C1726 /* UGCKitResources.bundle in Resources */,
 				1205E5AA2553DFC700FB938C /* brightness.fsh in Resources */,
 				40091FC11F4FCBBE009B882D /* QBImagePicker.storyboard in Resources */,
@@ -2662,13 +2751,16 @@
 				400920241F4FCBBE009B882D /* LaunchScreen.storyboard in Resources */,
 				4009202D1F4FCBBE009B882D /* Assets.xcassets in Resources */,
 				A06E850A214F95E000DF949B /* VideoJoiner.xcassets in Resources */,
+				2BBEC0D3299E155000A98FCB /* LiveInputBaseViewController.xib in Resources */,
 				D6BEF7B4204035CC00CBE2BD /* danmakufile in Resources */,
 				CE7C6E4F1FC2C5320095663F /* FilterResource.bundle in Resources */,
 				D6BEF6EC2040307E00CBE2BD /* VideoEditPrevController.xib in Resources */,
 				A06E854E214F9E1E00DF949B /* Common.xcassets in Resources */,
 				51FAEA842306A91D00BAE11B /* CustomAudio48000_1.pcm in Resources */,
+				2BBEC0D7299E17F100A98FCB /* Localizable.strings in Resources */,
 				3A821071230EB863000CB377 /* on_mic.aac in Resources */,
 				45C37799226765A60054D0B8 /* Settings.bundle in Resources */,
+				2BBEC0B9299E012500A98FCB /* LivePkAudienceViewController.xib in Resources */,
 				3F57C5FD236C1F3900D4DFCE /* TRTC.storyboard in Resources */,
 				D6BEF6F82040307E00CBE2BD /* VideoJoinerController.xib in Resources */,
 				400920591F4FCBBE009B882D /* Main.storyboard in Resources */,
@@ -2726,6 +2818,7 @@
 				12033DE623BE18C90088163F /* NSString+MJExtension.m in Sources */,
 				D541373322795FAA006D9C9D /* LiveRoomPlayerViewController.m in Sources */,
 				D541373422795FAA006D9C9D /* LiveRoomPusherViewController.m in Sources */,
+				2BBEC0CB299E048900A98FCB /* UIColor+Hex.m in Sources */,
 				D541373522795FAA006D9C9D /* LiveRoomTableViewCell.m in Sources */,
 				21D67206252B431E007C4B9F /* TRTCCustomerCrypt.mm in Sources */,
 				1229186E243DB79A0001BAB5 /* TRTCEffectManager.m in Sources */,
@@ -2749,6 +2842,7 @@
 				3F57C5C5236C1EBC00D4DFCE /* TRTCAudioSettingsViewController.m in Sources */,
 				D541373D22795FAA006D9C9D /* PushBgmControl.m in Sources */,
 				6AB3347A1FA96543007C8244 /* AFAutoPurgingImageCache.m in Sources */,
+				2BBEC0B5299E012500A98FCB /* LivePkUserInputViewController.m in Sources */,
 				3F57C58E236C1EBC00D4DFCE /* UISlider+TRTC.m in Sources */,
 				40091F711F4FCBBE009B882D /* QBAssetCell.m in Sources */,
 				91DB2F01212554B500013D74 /* SuperPlayerGuideView.m in Sources */,
@@ -2780,6 +2874,7 @@
 				6A3105DB22682A06002F6115 /* ImageUploadViewController.m in Sources */,
 				40091F7E1F4FCBBE009B882D /* QBImagePickerController.m in Sources */,
 				3F57C5AC236C1EBC00D4DFCE /* TRTCSettingsSwitchCell.m in Sources */,
+				2BBEC0B4299E012500A98FCB /* LivePkAudienceViewController.m in Sources */,
 				6AB334441FA96543007C8244 /* UIRefreshControl+AFNetworking.m in Sources */,
 				D6BEF7582040353E00CBE2BD /* ListVideoCell.m in Sources */,
 				6AB3345F1FA96543007C8244 /* UIButton+AFNetworking.m in Sources */,
@@ -2802,6 +2897,8 @@
 				3F57C5B1236C1EBC00D4DFCE /* TRTCSettingsSliderCell.m in Sources */,
 				918BFA812021AA8C001857DA /* UIView+WebCacheOperation.m in Sources */,
 				1205E5C92553DFF000FB938C /* TRTCShaderCompiler.m in Sources */,
+				2BBEC0C8299E03F900A98FCB /* URLUtils.m in Sources */,
+				2BBEC0C5299E030800A98FCB /* AppLocalized.m in Sources */,
 				3F57C5B6236C1EBC00D4DFCE /* TRTCSettingsSelectorCell.m in Sources */,
 				3F57C5BB236C1EBC00D4DFCE /* TRTCSettingsBaseViewController.m in Sources */,
 				3F57C5A7236C1EBC00D4DFCE /* TRTCSettingsButtonCell.m in Sources */,
@@ -2831,10 +2928,12 @@
 				6AB334681FA96543007C8244 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				40091F881F4FCBBE009B882D /* AppLogMgr.m in Sources */,
 				6AB334561FA96543007C8244 /* UIImageView+AFNetworking.m in Sources */,
+				2BBEC0BC299E014E00A98FCB /* LiveInputBaseViewController.m in Sources */,
 				40091F891F4FCBBE009B882D /* QBVideoIndicatorView.m in Sources */,
 				D6BEF6F52040307E00CBE2BD /* VideoJoinerController.m in Sources */,
 				910E17A92080A38400178D86 /* TXMoviePlayInfoResponse.m in Sources */,
 				D6B3D7BB22436AFA00B912F1 /* TCMediaFileReader.m in Sources */,
+				2BBEC0B6299E012500A98FCB /* LivePkAnchorViewController.m in Sources */,
 				918BFA772021AA8C001857DA /* SDWebImageDecoder.m in Sources */,
 				4531CAA0244F30DB00D04286 /* SimpleIPC.m in Sources */,
 				A0B8FBF4207E2352008D7982 /* TXUGCPublishUtil.m in Sources */,
@@ -2858,6 +2957,7 @@
 				3F57C5D4236C1EBC00D4DFCE /* TRTCPKSettingsViewController.m in Sources */,
 				918BFA7D2021AA8C001857DA /* UIImage+GIF.m in Sources */,
 				12033DDE23BE18C90088163F /* NSObject+MJProperty.m in Sources */,
+				2BBEC0BF299E01E400A98FCB /* LiveLinkOrPkSwitchRoleViewController.m in Sources */,
 				6AB334A71FA96543007C8244 /* AFURLRequestSerialization.m in Sources */,
 				40091F951F4FCBBE009B882D /* UIButton+Additions.m in Sources */,
 				D6BEF6E92040307E00CBE2BD /* VideoEditPrevController.m in Sources */,
@@ -2875,6 +2975,7 @@
 				6A34FAC0204FDE850016445B /* WebRTCViewController.m in Sources */,
 				CE59D395206CD11F00583727 /* VideoCompressViewController.m in Sources */,
 				3F57C5D9236C1EBC00D4DFCE /* TRTCFeatureContainerViewController.m in Sources */,
+				2BBEC0C2299E023300A98FCB /* LiveLinkOrPkStreamInputViewController.m in Sources */,
 				D6D83B0F2249FF600065C36A /* TestSendCustomVideoData.m in Sources */,
 				40091F9C1F4FCBBE009B882D /* NSObject+CommonBlock.m in Sources */,
 				6AB334831FA96543007C8244 /* AFImageDownloader.m in Sources */,
@@ -2892,6 +2993,7 @@
 				A0B8FBFC207E2352008D7982 /* TVCReport.m in Sources */,
 				918775DD1FEA5CE3001D19D0 /* View+MASAdditions.m in Sources */,
 				40091FA01F4FCBBE009B882D /* main.m in Sources */,
+				2BBEC0B8299E012500A98FCB /* LivePkFindPkUserController.m in Sources */,
 				CE43944920948BB7004F1977 /* LiveRecordPreviewViewController.m in Sources */,
 				918BFA752021AA8C001857DA /* SDImageCache.m in Sources */,
 				3F57C54D236C1EBC00D4DFCE /* TRTCCdnPlayerConfig.m in Sources */,
@@ -2965,6 +3067,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		2BBEC0D5299E17F100A98FCB /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				2BBEC0D6299E17F100A98FCB /* zh-Hans */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		40F853311EE8FC9B00EE47D7 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3020,6 +3130,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TXLiteAVDemo/PCH/TXLiteAVDemoPCH.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SDK_MAIN_VERSION=$(MAIN_VERSION)",
@@ -3040,9 +3152,10 @@
 					"$(PROJECT_DIR)/../SDK/TXLiteAVSDK_Professional.framework/Headers",
 					"$(PROJECT_DIR)/TXLiteAVDemo//Third/Masonry",
 					"$(PROJECT_DIR)/SuperPlayer/SuperPlayer/**",
+					"$(PROJECT_DIR)/../SDK/TXFFmpeg.xcframework/ios-arm64_armv7/TXFFmpeg.framework/Headers",
 				);
 				INFOPLIST_FILE = TXLiteAVDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -3086,6 +3199,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TXLiteAVDemo/PCH/TXLiteAVDemoPCH.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SDK_MAIN_VERSION=$(MAIN_VERSION)",
@@ -3106,7 +3221,7 @@
 					"$(PROJECT_DIR)/SuperPlayer/SuperPlayer/**",
 				);
 				INFOPLIST_FILE = TXLiteAVDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3150,6 +3265,8 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_CPP_EXCEPTIONS = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/TXLiteAVDemo/PCH/TXLiteAVDemoPCH.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
 					"SDK_MAIN_VERSION=$(MAIN_VERSION)",
@@ -3171,7 +3288,7 @@
 					"$(PROJECT_DIR)/SuperPlayer/SuperPlayer/**",
 				);
 				INFOPLIST_FILE = TXLiteAVDemo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_GENERATE_MAP_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

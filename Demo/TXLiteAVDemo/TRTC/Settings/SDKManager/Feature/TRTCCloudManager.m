@@ -44,7 +44,7 @@
 - (void)onRemoteUserLeaveRoom:(NSString *)userId reason:(NSInteger)reason;
 @end
 
-@interface TRTCCloudManager()<CustomAudioFileReaderDelegate, TRTCVideoFrameDelegate>
+@interface TRTCCloudManager()<CustomAudioFileReaderDelegate, TRTCVideoFrameDelegate,TXLiveAudioSessionDelegate>
 
 @property (strong, nonatomic) TRTCCloud *trtc;
 @property (nonatomic) BOOL isCrossingRoom;
@@ -81,6 +81,8 @@
         _bizId = bizId;
         _videoConfig = [[TRTCVideoConfig alloc] initWithScene:scene];
         _audioConfig = [[TRTCAudioConfig alloc] init];
+#pragma mark - 接管AVAudioSession用 记得测试完注释掉
+        [TXLiveBase setAudioSessionDelegate:self];
         _streamConfig = [[TRTCStreamConfig alloc] init];
         _renderTester = [[TestRenderVideoFrame alloc] init];
         _subClouds = [[NSMutableDictionary alloc] init];
@@ -93,7 +95,22 @@
     }
     return self;
 }
-
+#pragma mark -接管AVAudioSession 使用前需要[TXLiveBase setAudioSessionDelegate:self];
+-(BOOL)overrideOutputAudioPort:(AVAudioSessionPortOverride)portOverride error:(NSError *__autoreleasing  _Nullable *)outError{
+    return YES;
+}
+- (BOOL)setCategory:(NSString *)category withOptions:(AVAudioSessionCategoryOptions)options error:(NSError *__autoreleasing  _Nullable *)outError{
+    return YES;
+}
+-(BOOL)setCategory:(NSString *)category mode:(NSString *)mode options:(AVAudioSessionCategoryOptions)options error:(NSError *__autoreleasing  _Nullable *)outError{
+    return YES;
+}
+-(BOOL)setCategory:(NSString *)category error:(NSError *__autoreleasing  _Nullable *)outError{
+    return YES;
+}
+-(BOOL)setMode:(NSString *)mode error:(NSError *__autoreleasing  _Nullable *)outError{
+    return YES;
+}
 - (void)setupTrtc {
     [self setupTrtcVideo];
     [self setupTrtcAudio];
@@ -122,6 +139,7 @@
         self.currentPublishingRoomId = self.params.roomId ? [@(self.params.roomId) stringValue] : self.params.strRoomId;
     }
     [self startLocalAudio];
+    [self.trtc startPublishing:@"hzhi" type:TRTCVideoStreamTypeBig];
 }
 
 - (void)enterSubRoom:(TRTCParams *)params {
@@ -896,6 +914,73 @@
     self.streamConfig.streamId = streamId;
     [self updateCloudMixtureParams];
 }
+- (void)update3DAudioEffect{
+    [self.trtc enable3DSpatialAudioEffect:YES];
+    int position[3] = {0,0,0};
+    float axisForward [3] = {1,0,0};
+    float axisRight [3] = {0,1,0};
+    float axisUp[3] = {0,0,1};
+    [self.trtc updateSelf3DSpatialPosition:position axisForward:axisForward axisRight:axisRight axisUp:axisUp];
+    [self.trtc set3DSpatialReceivingRange:@"123" range:100];
+ 
+    [self.trtc updateRemote3DSpatialPosition:@"123" position:position];
+}
+-(void)setPublishMediaStreamWithRoomId:(NSString *)roomid{
+    TRTCPublishTarget *target = [[TRTCPublishTarget alloc]init];
+    target.mode = TRTCPublishMixStreamToRoom;
+   // [self.trtc setGSensorMode:TRTCGSensorMode_UIFixLayout];
+    target.mixStreamIdentity.userId = [NSString stringWithFormat:@"%@_mix",_params.userId];
+    target.mixStreamIdentity.intRoomId = roomid.integerValue;
+    
+    TRTCStreamEncoderParam *params = [TRTCStreamEncoderParam new];
+   // params
+    params.videoEncodedFPS = 15;
+    params.videoEncodedWidth = 720;
+    params.videoEncodedHeight = 1280;
+    params.videoEncodedGOP = 1;
+    TRTCStreamMixingConfig *config = [TRTCStreamMixingConfig new];
+
+    NSMutableArray *videoLayerList = [NSMutableArray array];
+    __block int index = 0;
+    TRTCUser *anchor  = [TRTCUser new];
+    anchor.userId = _params.userId;
+    TRTCVideoLayout *layer = [TRTCVideoLayout new];
+    layer.rect = CGRectMake(0, 0, 720, 1280);
+    layer.zOrder = 1;
+    [videoLayerList addObject:layer];
+    [self.remoteUserManager.remoteUsers enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull userID, TRTCRemoteUserConfig * _Nonnull obj, BOOL * _Nonnull stop) {
+        
+        int videoWidth  = 720;
+        int videoHeight = 1280;
+        
+        // 小画面宽高
+        int subWidth  = 180;
+        int subHeight = 320;
+        
+        int offsetX = 5;
+        int offsetY = 50;
+        
+        TRTCUser *audience = [TRTCUser new];
+        TRTCVideoLayout *layer = [TRTCVideoLayout new];
+        audience.userId = userID;
+        layer.fixedVideoUser = audience;
+        layer.zOrder = 2 + index;
+        if (index < 3) {
+            // 前三个小画面靠右从下往上铺
+            layer.rect = CGRectMake(videoWidth - offsetX - subWidth, videoHeight - offsetY - index * subHeight - subHeight, subWidth, subHeight);
+        } else if (index < 6) {
+            // 后三个小画面靠左从下往上铺
+            layer.rect = CGRectMake(offsetX, videoHeight - offsetY - (index - 3) * subHeight - subHeight, subWidth, subHeight);
+        } else {
+            // 最多只叠加六个小画面
+        }
+        [videoLayerList addObject:layer];
+        ++index;
+     
+    }];
+    config.videoLayoutList = videoLayerList;
+    [self.trtc startPublishMediaStream:target encoderParam:params  mixingConfig:config];
+}
 
 #pragma mark - Message
 
@@ -990,6 +1075,9 @@
         [CustomAudioFileReader sharedInstance].delegate = self;
         [[CustomAudioFileReader sharedInstance] start:48000 channels:1 framLenInSample:960];
     } else {
+        [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:109 error:nil];
+
+        [[AVAudioSession sharedInstance]setActive:YES error:nil];
         [self.trtc startLocalAudio];
     }
 }

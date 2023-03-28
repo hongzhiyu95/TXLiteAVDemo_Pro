@@ -257,6 +257,7 @@
     TXLivePushConfig *config = [[TXLivePushConfig alloc] init];
     config.pauseFps = 10;
     config.pauseTime = 300;
+ //   config.videoEncodeGop = 1;
     config.pauseImg = [UIImage imageNamed:@"pause_publish"];
     config.touchFocus = [PushMoreSettingViewController isEnableTouchFocus];
     config.enableZoom = [PushMoreSettingViewController isEnableVideoZoom];
