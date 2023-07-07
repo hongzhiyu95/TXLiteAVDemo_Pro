@@ -51,7 +51,7 @@
 
 - (void)startPlay:(NSString *)url {
     [self applyConfigToPlayer];
-    self.player.isAutoPlay = NO;
+ 
  //   [self.player startPlay:url type:PLAY_TYPE_LIVE_FLV];
     float sdkVersion = [TXLiveBase getSDKVersionStr].floatValue;
     NSString *selString = @"startPlay:type:";

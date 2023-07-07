@@ -7,7 +7,6 @@
 //
 
 #import "VideoCompressPreviewController.h"
-#import "MoviePlayerViewController.h"
 #import "TXVideoEditer.h"
 #import "TXUGCPublish.h"
 #import "ColorMacro.h"
@@ -205,31 +204,31 @@
     }
 }
 
--(void) onPublishComplete:(TXPublishResult*)result
-{
-    if(!_cancelPublish){
-        if(result.retCode == 0){
-            //同步给业务server
-            NSString *videoUrl = result.videoURL;
-            [TCHttpUtil asyncSendHttpRequest:[NSString stringWithFormat:@"api/v1/resource/videos/%@",result.videoId] httpServerAddr:kHttpUGCServerAddr HTTPMethod:@"PUT" param:nil handler:^(int result, NSDictionary *resultDict) {
-                MoviePlayerViewController *vc = [MoviePlayerViewController new];
-                vc.videoURL = videoUrl;
-                [self.navigationController pushViewController:vc animated:YES];
-                _generationView.hidden = YES;
-                _generateProgressView.progress = 0;
-            }];
-        }else{
-            _generationView.hidden = YES;
-            _generateProgressView.progress = 0;
-            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"视频上传失败"
-                                                                message:[NSString stringWithFormat:@"错误信息：%@",result.descMsg]
-                                                               delegate:self
-                                                      cancelButtonTitle:@"知道了"
-                                                      otherButtonTitles:nil, nil];
-            [alertView show];
-        }
-    }
-}
+//-(void) onPublishComplete:(TXPublishResult*)result
+//{
+//    if(!_cancelPublish){
+//        if(result.retCode == 0){
+//            //同步给业务server
+//            NSString *videoUrl = result.videoURL;
+//            [TCHttpUtil asyncSendHttpRequest:[NSString stringWithFormat:@"api/v1/resource/videos/%@",result.videoId] httpServerAddr:kHttpUGCServerAddr HTTPMethod:@"PUT" param:nil handler:^(int result, NSDictionary *resultDict) {
+//                MoviePlayerViewController *vc = [MoviePlayerViewController new];
+//                vc.videoURL = videoUrl;
+//                [self.navigationController pushViewController:vc animated:YES];
+//                _generationView.hidden = YES;
+//                _generateProgressView.progress = 0;
+//            }];
+//        }else{
+//            _generationView.hidden = YES;
+//            _generateProgressView.progress = 0;
+//            UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"视频上传失败"
+//                                                                message:[NSString stringWithFormat:@"错误信息：%@",result.descMsg]
+//                                                               delegate:self
+//                                                      cancelButtonTitle:@"知道了"
+//                                                      otherButtonTitles:nil, nil];
+//            [alertView show];
+//        }
+//    }
+//}
 
 -(void) onPublishEvent:(NSDictionary*)evt
 {

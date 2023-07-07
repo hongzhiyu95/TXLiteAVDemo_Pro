@@ -418,9 +418,8 @@ typedef NS_ENUM(NSInteger, ENUM_TYPE_CACHE_STRATEGY) {
             _playType = PLAY_TYPE_LIVE_RTMP;
         } else if (([playUrl hasPrefix:@"https:"] || [playUrl hasPrefix:@"http:"]) && ([playUrl rangeOfString:@".flv"].length > 0)) {
             _playType = PLAY_TYPE_LIVE_FLV;
-        } else if (([playUrl hasPrefix:@"https:"] || [playUrl hasPrefix:@"http:"]) && [playUrl rangeOfString:@".m3u8"].length > 0) {
-            _playType = PLAY_TYPE_VOD_HLS;
-        } else{
+        }
+         else{
             [self toastTip:@"播放地址不合法，直播目前仅支持rtmp,flv播放方式!"];
             return NO;
         }

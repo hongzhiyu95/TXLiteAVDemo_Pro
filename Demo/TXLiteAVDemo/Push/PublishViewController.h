@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-#import "TXLivePush.h"
+
 //#import "TXUGCRecord.h"
-#import "BeautySettingPanel.h"
+//#import "BeautySettingPanel.h"
 
 @interface PushMusicInfo : NSObject
 @property (nonatomic, copy) NSString* filePath;

@@ -8,7 +8,7 @@
 
 #import "DownloadViewController.h"
 #import "TXVodDownloadManager.h"
-#import "UIView+MMLayout.h"
+
 
 @interface DownloadViewController ()<TXVodDownloadDelegate>
 
@@ -45,14 +45,14 @@
     [b1 setTitle:@"删除任务" forState:UIControlStateNormal];
     [b1 sizeToFit];
     [b1 addTarget:self action:@selector(deleteDownloadFile:) forControlEvents:UIControlEventTouchUpInside];
-    b1.m_top(40).m_left(20);
+ //   b1.m_top(40).m_left(20);
     [self.view addSubview:b1];
     
     UIButton *b2 = [UIButton buttonWithType:UIButtonTypeSystem];
     [b2 setTitle:@"停止任务" forState:UIControlStateNormal];
     [b2 sizeToFit];
     [b2 addTarget:self action:@selector(stopDownloadFile:) forControlEvents:UIControlEventTouchUpInside];
-    b2.m_top(40).m_left(90);
+  //  b2.m_top(40).m_left(90);
     [self.view addSubview:b2];
 }
 

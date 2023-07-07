@@ -11,7 +11,7 @@
 #import "TXLiteAVSDKHeader.h"
 #import "VideoPreviewViewController.h"
 #import "VideoJoinerController.h"
-#import "SuperPlayer.h"
+
 #import "VideoRecordConfigViewController.h"
 
 typedef UINavigationController TCNavigationController;
@@ -400,7 +400,7 @@ typedef NS_ENUM(NSInteger, TCVideoAction) {
             }];
         }
     };
-    [self _hideSuperPlayer];
+
     [self.viewController presentViewController:nav animated:YES completion:NULL];
 }
 
@@ -427,7 +427,7 @@ typedef NS_ENUM(NSInteger, TCVideoAction) {
             [wself.viewController dismissViewControllerAnimated:YES completion:nil];
         }
     };
-    [self _hideSuperPlayer];
+
     [self.viewController presentViewController:nav animated:YES completion:NULL];
 }
 
@@ -459,7 +459,7 @@ typedef NS_ENUM(NSInteger, TCVideoAction) {
             }];
         }
     };
-    [self _hideSuperPlayer];
+   
     [self.viewController presentViewController:nav animated:YES completion:NULL];
 }
 
@@ -469,18 +469,12 @@ typedef NS_ENUM(NSInteger, TCVideoAction) {
     configViewController.onTapStart = ^(UGCKitRecordConfig *config) {
         [wself showRecordViewControllerWithConfig:config];
     };
-    [self _hideSuperPlayer];
+ 
     [self.viewController.navigationController pushViewController:configViewController
                                                         animated:YES];
 }
 
-- (void)_hideSuperPlayer {
-    if (SuperPlayerWindowShared.isShowing) {
-        [SuperPlayerWindowShared hide];
-        [SuperPlayerWindowShared.superPlayer resetPlayer];
-        SuperPlayerWindowShared.backController = nil;
-    }
-}
+
 
 @end
 

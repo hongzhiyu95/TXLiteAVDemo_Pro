@@ -21,9 +21,7 @@
 #import "UGCKitWrapper.h"
 #endif
 
-#if defined(ENABLE_PLAY) && !defined(DISABLE_VOD)
-#import "SuperPlayer.h"
-#endif
+
 
 #ifdef ENABLE_TRTC
 #import "TRTCNewViewController.h"
@@ -95,11 +93,7 @@ UIAlertViewDelegate
         NSMutableArray *subCells = [NSMutableArray new];
         CellInfo* scellInfo;
         
-#if defined(ENABLE_PUSH) && defined(ENABLE_PLAY)
-        scellInfo = [CellInfo cellInfoWithTitle:@"MLVBLiveRoom"
-                       controllerClassName:@"LiveRoomListViewController"];
-        [subCells addObject:scellInfo];
-#endif
+
         
 #ifdef ENABLE_PUSH
         scellInfo = [CellInfo cellInfoWithTitle:@"V1摄像头推流"
@@ -122,9 +116,7 @@ UIAlertViewDelegate
         scellInfo = [CellInfo cellInfoWithTitle:@"V2直播拉流"
                        controllerClassName:@"V2PlayViewController"];
         [subCells addObject:scellInfo];
-        scellInfo = [CellInfo cellInfoWithTitle:@"V2直播PK"
-                       controllerClassName:@"LivePkFindPkUserController"];
-        [subCells addObject:scellInfo];
+
 #endif
 
 
@@ -153,8 +145,8 @@ UIAlertViewDelegate
     cellInfo.subCells = ({
         NSMutableArray *subCells = [NSMutableArray new];
         CellInfo* scellInfo;
-        scellInfo = [CellInfo cellInfoWithTitle:@"超级播放器"
-                       controllerClassName:@"MoviePlayerViewController"];
+        scellInfo = [CellInfo cellInfoWithTitle:@"点播播放器"
+                               controllerClassName:@"PlayVodViewController"];
         [subCells addObject:scellInfo];
         subCells;
     });
@@ -252,49 +244,49 @@ UIAlertViewDelegate
     });
 #endif
 
-    cellInfo = [CellInfo new];
-    cellInfo.title = @"调试工具";
-    cellInfo.iconName = @"dbg_tool";
-    cellInfo.subCells = ({
-        NSMutableArray *subCells = [NSMutableArray new];
-        CellInfo* scellInfo;
-        
-#ifndef DISABLE_VOD
-        scellInfo = [CellInfo cellInfoWithTitle:@"点播播放器"
-                       controllerClassName:@"PlayVodViewController"];
-        [subCells addObject:scellInfo];
-#if 0
-        scellInfo = [CellInfo cellInfoWithTitle:@"下载"
-                       controllerClassName:@"DownloadViewController"];
-        [subCells addObject:scellInfo];
-#endif
-#endif
+//    cellInfo = [CellInfo new];
+//    cellInfo.title = @"调试工具";
+//    cellInfo.iconName = @"dbg_tool";
+//    cellInfo.subCells = ({
+//        NSMutableArray *subCells = [NSMutableArray new];
+//        CellInfo* scellInfo;
+//
+//#ifndef DISABLE_VOD
+//        scellInfo = [CellInfo cellInfoWithTitle:@"点播播放器"
+//                       controllerClassName:@"PlayVodViewController"];
+//        [subCells addObject:scellInfo];
+//#if 0
+//        scellInfo = [CellInfo cellInfoWithTitle:@"下载"
+//                       controllerClassName:@"DownloadViewController"];
+//        [subCells addObject:scellInfo];
+//#endif
+//#endif
 
-#ifndef APPSTORE
-        
-#if defined(ENABLE_PLAY) && defined(ENABLE_PUSH)
+//#ifndef APPSTORE
+//
+//#if defined(ENABLE_PLAY) && defined(ENABLE_PUSH)
 //        if (NSClassFromString(@"WebRTCViewController") != Nil) {
 //            scellInfo = [CellInfo new];
 //            scellInfo.title = @"微信-WebRTC Room";
 //            scellInfo.navigateToController = @"WebRTCViewController";
 //            [subCells addObject:scellInfo];
 //        }
-        if (NSClassFromString(@"TRTCWeChatRoomEntryViewController") != Nil) {
-            scellInfo = [CellInfo cellInfoWithTitle:@"微信视频会议"
-                       controllerCreationBlock:^UIViewController * _Nonnull{
-                UIStoryboard *stroyBoard = [UIStoryboard storyboardWithName:@"TrtcWeChat" bundle:nil];
-                UIViewController *controller = [stroyBoard instantiateViewControllerWithIdentifier:@"TRTCWeChatRoomEntryViewController"];
-                return controller;
-            }];
-            [subCells addObject:scellInfo];
-        }
-#endif
-#endif
-        subCells;
-    });
-    if ([cellInfo.subCells count] > 0) {
-        [_cellInfos addObject:cellInfo];
-    }
+//        if (NSClassFromString(@"TRTCWeChatRoomEntryViewController") != Nil) {
+//            scellInfo = [CellInfo cellInfoWithTitle:@"微信视频会议"
+//                       controllerCreationBlock:^UIViewController * _Nonnull{
+//                UIStoryboard *stroyBoard = [UIStoryboard storyboardWithName:@"TrtcWeChat" bundle:nil];
+//                UIViewController *controller = [stroyBoard instantiateViewControllerWithIdentifier:@"TRTCWeChatRoomEntryViewController"];
+//                return controller;
+//            }];
+//            [subCells addObject:scellInfo];
+//        }
+//#endif
+//#endif
+//        subCells;
+//    });
+//    if ([cellInfo.subCells count] > 0) {
+//        [_cellInfos addObject:cellInfo];
+//    }
 }
 
 - (void)initUI
@@ -468,7 +460,7 @@ UIAlertViewDelegate
         UIViewController *controller = [cellInfo createEntryController];
         if (controller) {
             if (![controller isKindOfClass:NSClassFromString(@"MoviePlayerViewController")]) {
-                [self _hideSuperPlayer];
+//                [self _hideSuperPlayer];
             }
             [self.navigationController pushViewController:controller animated:YES];
         }
@@ -486,17 +478,17 @@ UIAlertViewDelegate
     return 51;
 }
 
-#if defined(ENABLE_PLAY) && !defined(DISABLE_VOD)
-- (void)_hideSuperPlayer {
-    if (SuperPlayerWindowShared.isShowing) {
-        [SuperPlayerWindowShared hide];
-        [SuperPlayerWindowShared.superPlayer resetPlayer];
-        SuperPlayerWindowShared.backController = nil;
-    }
-}
-#else
-- (void)_hideSuperPlayer {}
-#endif
+//#if defined(ENABLE_PLAY) && !defined(DISABLE_VOD)
+//- (void)_hideSuperPlayer {
+//    if (SuperPlayerWindowShared.isShowing) {
+//        [SuperPlayerWindowShared hide];
+//        [SuperPlayerWindowShared.superPlayer resetPlayer];
+//        SuperPlayerWindowShared.backController = nil;
+//    }
+//}
+//#else
+//- (void)_hideSuperPlayer {}
+//#endif
 
 - (void)handleLongPress:(UILongPressGestureRecognizer *)pressRecognizer
 {

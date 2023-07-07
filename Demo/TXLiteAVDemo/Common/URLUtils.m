@@ -27,41 +27,41 @@
     }
     return [outPutStr lowercaseString];
 }
+//
+//+ (NSString*)getSafeUrl:(NSString*)streamId {
+//    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
+//    NSTimeInterval time= [date timeIntervalSince1970] + 60 * 60 * 24;
+//
+//    NSString *hexTxTime = [[NSString alloc] initWithFormat:@"%X", (int)time];
+//    NSString *secret = [[LIVE_URL_KEY stringByAppendingString:streamId] stringByAppendingString:hexTxTime];
+//    NSString *txSecret = [URLUtils getMd5WithString:secret];
+//    
+//    return [[NSString alloc] initWithFormat:@"txSecret=%@&txTime=%@", txSecret, hexTxTime];
+//}
 
-+ (NSString*)getSafeUrl:(NSString*)streamId {
-    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
-    NSTimeInterval time= [date timeIntervalSince1970] + 60 * 60 * 24;
+//+ (NSString*)generateRtmpPushUrl:(NSString*)streamId {
+//    NSString *url = [NSString stringWithFormat:@"rtmp://%@/live/%@?%@",
+//           PUSH_DOMAIN, streamId, [URLUtils getSafeUrl:streamId]];
+//    return url;
+//}
+//+ (NSString*)generateRtmpPlayUrl:(NSString*)streamId {
+//    NSString *url = [NSString stringWithFormat:@"rtmp://%@/live/%@",
+//           PLAY_DOMAIN, streamId];
+//    return url;
+//}
+//
+//+ (NSString*)generateFlvPlayUrl:(NSString*)streamId {
+//    NSString *url = [NSString stringWithFormat:@"http://%@/live/%@.flv",
+//           PLAY_DOMAIN, streamId];
+//    return url;
+//
+//}
 
-    NSString *hexTxTime = [[NSString alloc] initWithFormat:@"%X", (int)time];
-    NSString *secret = [[LIVE_URL_KEY stringByAppendingString:streamId] stringByAppendingString:hexTxTime];
-    NSString *txSecret = [URLUtils getMd5WithString:secret];
-    
-    return [[NSString alloc] initWithFormat:@"txSecret=%@&txTime=%@", txSecret, hexTxTime];
-}
-
-+ (NSString*)generateRtmpPushUrl:(NSString*)streamId {
-    NSString *url = [NSString stringWithFormat:@"rtmp://%@/live/%@?%@",
-           PUSH_DOMAIN, streamId, [URLUtils getSafeUrl:streamId]];
-    return url;
-}
-+ (NSString*)generateRtmpPlayUrl:(NSString*)streamId {
-    NSString *url = [NSString stringWithFormat:@"rtmp://%@/live/%@",
-           PLAY_DOMAIN, streamId];
-    return url;
-}
-
-+ (NSString*)generateFlvPlayUrl:(NSString*)streamId {
-    NSString *url = [NSString stringWithFormat:@"http://%@/live/%@.flv",
-           PLAY_DOMAIN, streamId];
-    return url;
-
-}
-
-+ (NSString*)generateHlsPlayUrl:(NSString*)streamId {
-    NSString *url = [NSString stringWithFormat:@"http://%@/live/%@.m3u8",
-           PLAY_DOMAIN, streamId];
-    return url;
-}
+//+ (NSString*)generateHlsPlayUrl:(NSString*)streamId {
+//    NSString *url = [NSString stringWithFormat:@"http://%@/live/%@.m3u8",
+//           PLAY_DOMAIN, streamId];
+//    return url;
+//}
 
 + (NSString*)generateTRTCPushUrl:(NSString*)streamId {
     NSString *userId = [NSString generateRandomUserId];
@@ -88,12 +88,12 @@
 }
 
 
-+ (NSString*)generateLebPlayUrl:(NSString*)streamId {
-    NSString *url = [NSString stringWithFormat:@"webrtc://%@/live/%@",
-           PLAY_DOMAIN, streamId];
-
-    return url;
-}
+//+ (NSString*)generateLebPlayUrl:(NSString*)streamId {
+//    NSString *url = [NSString stringWithFormat:@"webrtc://%@/live/%@",
+//           PLAY_DOMAIN, streamId];
+//
+//    return url;
+//}
 
 
 @end
