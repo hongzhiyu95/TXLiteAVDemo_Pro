@@ -505,7 +505,7 @@ UIAlertViewDelegate
         }];
         self.logFilesArray = [NSMutableArray new];
         for (NSString* logName in fileArray) {
-            if ([logName hasSuffix:@"xlog"]) {
+            if ([logName hasSuffix:@"xlog"]||[logName hasSuffix:@"clog"]) {
                 [self.logFilesArray addObject:logName];
             }
         }

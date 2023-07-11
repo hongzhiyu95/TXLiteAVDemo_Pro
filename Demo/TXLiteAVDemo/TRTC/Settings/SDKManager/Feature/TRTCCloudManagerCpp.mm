@@ -37,7 +37,7 @@ return;\
 #define APPGROUP @"group.com.tencent.liteav.RPLiveStreamRelease" // App Store Group
 #endif
 
-class MyTRTCCoudCallBack : public trtc::ITRTCCloudCallback{
+class MyTRTCCoudCallBack : public     liteav::ITRTCCloudCallback{
     void onError(TXLiteAVError errCode, const char *errMsg, void *extraInfo);
     void onWarning(TXLiteAVWarning warningCode, const char *warningMsg, void *extraInfo);
     void onEnterRoom(int result);
@@ -50,16 +50,16 @@ class MyTRTCCoudCallBack : public trtc::ITRTCCloudCallback{
     void onUserVideoAvailable(const char* userId, bool available);
     void onUserSubStreamAvailable(const char* userId, bool available);
     void onUserAudioAvailable(const char* userId, bool available);
-    void onFirstVideoFrame(const char* userId, const trtc::TRTCVideoStreamType streamType, const int width, const int height);
-    void onNetworkQuality(trtc::TRTCQualityInfo localQuality, trtc::TRTCQualityInfo* remoteQuality, uint32_t remoteQualityCount);
-    void onStatistics(const trtc::TRTCStatistics& statis);
-    void onUserVoiceVolume(trtc::TRTCVolumeInfo* userVolumes, uint32_t userVolumesCount, uint32_t totalVolume);
+    void onFirstVideoFrame(const char* userId, const   liteav::TRTCVideoStreamType streamType, const int width, const int height);
+    void onNetworkQuality( liteav::TRTCQualityInfo localQuality,  liteav::TRTCQualityInfo* remoteQuality, uint32_t remoteQualityCount);
+    void onStatistics(const  liteav::TRTCStatistics& statis);
+    void onUserVoiceVolume( liteav::TRTCVolumeInfo* userVolumes, uint32_t userVolumesCount, uint32_t totalVolume);
     void onRecvCustomCmdMsg(const char* userId, int32_t cmdID, uint32_t seq, const uint8_t* message, uint32_t messageSize);
     void onMissCustomCmdMsg(const char* userId, int32_t cmdID, int32_t errCode, int32_t missed);
     void onRecvSEIMsg(const char* userId, const uint8_t* message, uint32_t messageSize);
 };
 
-class MyTRTCSubCoudCallBack : public trtc::ITRTCCloudCallback{
+class MyTRTCSubCoudCallBack : public  liteav::ITRTCCloudCallback{
     std::string subRoomId;
     __weak TRTCCloudManagerCpp *weakManager;
 public:
@@ -74,17 +74,17 @@ public:
     void onRemoteUserLeaveRoom(const char* userId, int reason);
 };
 
-class MyAudioCallBack : public trtc::ITRTCAudioFrameCallback {
-    void onCapturedAudioFrame(trtc::TRTCAudioFrame *frame);
-    void onMixedPlayAudioFrame(trtc::TRTCAudioFrame *frame);
+class MyAudioCallBack : public  liteav::ITRTCAudioFrameCallback {
+    void onCapturedAudioFrame( liteav::TRTCAudioFrame *frame);
+    void onMixedPlayAudioFrame( liteav::TRTCAudioFrame *frame);
 };
 
-class MyLocalVideoCallBack : public trtc::ITRTCVideoRenderCallback {
-    void onRenderVideoFrame(const char* userId, trtc::TRTCVideoStreamType streamType, trtc::TRTCVideoFrame* frame);
+class MyLocalVideoCallBack : public  liteav::ITRTCVideoRenderCallback {
+    void onRenderVideoFrame(const char* userId,  liteav::TRTCVideoStreamType streamType,  liteav::TRTCVideoFrame* frame);
 };
 
-class MyRemoteVideoCallBack : public trtc::ITRTCVideoRenderCallback {
-    void onRenderVideoFrame(const char* userId, trtc::TRTCVideoStreamType streamType, trtc::TRTCVideoFrame* frame);
+class MyRemoteVideoCallBack : public  liteav::ITRTCVideoRenderCallback {
+    void onRenderVideoFrame(const char* userId,  liteav::TRTCVideoStreamType streamType,  liteav::TRTCVideoFrame* frame);
 };
 
 @interface TRTCCloudManagerCpp()<CustomAudioFileReaderDelegate>
@@ -96,16 +96,16 @@ class MyRemoteVideoCallBack : public trtc::ITRTCVideoRenderCallback {
 // 视频文件播放
 @property (strong, nonatomic) TestSendCustomVideoData *videoCaptureTester;
 
-@property (nonatomic) trtc::TRTCRenderParams localRenderParams;
-@property (nonatomic) trtc::TRTCRenderParams remoteRenderParams;
-@property (nonatomic) trtc::TRTCRenderParams remoteSubRenderParams;
+@property (nonatomic)  liteav::TRTCRenderParams localRenderParams;
+@property (nonatomic)  liteav::TRTCRenderParams remoteRenderParams;
+@property (nonatomic)  liteav::TRTCRenderParams remoteSubRenderParams;
 @property (nonatomic) TRTCAudioQuality localAudioQuality;
 @property (nonatomic) MyTRTCCoudCallBack *trtcCloudCallBack;
 @property (nonatomic) MyAudioCallBack *trtcAudioCallBack;
 @property (nonatomic) MyLocalVideoCallBack *trtcLocalVideoCallBack;
 @property (atomic) std::map<std::string, MyRemoteVideoCallBack *> trtcRemoteVideoCallBackMap;
-@property (atomic) std::map<std::string, trtc::ITRTCCloud *> subClouds;
-@property (atomic) std::map<std::string, trtc::ITRTCCloudCallback *> subCallbacks;
+@property (atomic) std::map<std::string,  liteav::ITRTCCloud *> subClouds;
+@property (atomic) std::map<std::string,  liteav::ITRTCCloudCallback *> subCallbacks;
 @end
 
 @implementation TRTCCloudManagerCpp {
@@ -114,7 +114,7 @@ class MyRemoteVideoCallBack : public trtc::ITRTCVideoRenderCallback {
 }
 
 @synthesize isCrossingRoom = _isCrossingRoom;
-trtc::ITRTCCloud* trtcCloud = nullptr;
+ liteav::ITRTCCloud* trtcCloud = nullptr;
 id<TRTCCloudDelegate> trtcDelegate;
 id<TRTCAudioFrameDelegate> trtcAudioDelegate;
 id<TRTCVideoRenderDelegate> trtcLocalVideoDelegate;
@@ -129,9 +129,9 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
                              appId:appId
                              bizId:bizId]) {
         if (trtcCloud) {
-            trtc::ITRTCCloud::destroyTRTCShareInstance();
+            liteav::ITRTCCloud::destroyTRTCShareInstance();
         }
-        trtcCloud = trtc::ITRTCCloud::getTRTCShareInstance();
+        trtcCloud =  liteav::ITRTCCloud::getTRTCShareInstance();
         self.bizId = bizId;
         self.appId = appId;
         self.params = params;
@@ -173,7 +173,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 - (void)enterRoom {
     [self setupTrtc];
     [self startLocalVideo];
-    trtcCloud->enterRoom(*transTrtcParamToCpp(self.params), (trtc::TRTCAppScene)self.scene);
+    trtcCloud->enterRoom(*transTrtcParamToCpp(self.params), ( liteav::TRTCAppScene)self.scene);
     if (self.params.role == TRTCRoleAnchor) {
         self.currentPublishingRoomId = self.params.roomId ? [@(self.params.roomId) stringValue] : self.params.strRoomId;
     }
@@ -181,7 +181,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 }
 
 - (void)enterSubRoom:(TRTCParams *)params {
-    trtc::ITRTCCloud *subCloud = trtcCloud->createSubCloud();
+   liteav::ITRTCCloud *subCloud = trtcCloud->createSubCloud();
     //不论是字符串房间号还是数字房间号，在这里都用字符串做主键；因此同时进入数值与字符串相同的两个房间会出问题
     NSString *stringRoomId = params.roomId ? [@(params.roomId) stringValue] : params.strRoomId;
     _subClouds[[stringRoomId UTF8String]] = subCloud;
@@ -189,12 +189,12 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
     subCloud->addCallback(subCallback);
     _subCallbacks[[stringRoomId UTF8String]] = subCallback;
     //进入子房间
-    subCloud->enterRoom(*transTrtcParamToCpp(params), (trtc::TRTCAppScene)self.scene);
+    subCloud->enterRoom(*transTrtcParamToCpp(params), ( liteav::TRTCAppScene)self.scene);
 }
 
 - (void)exitSubRoom:(NSString *)roomId {
     //不论是字符串房间号还是数字房间号，在这里都用字符串做主键；因此同时进入数值与字符串相同的两个房间会出问题
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
     subCloud->exitRoom();
     //这里不调用destroySubCloud，否则会导致UI层收不到onExitRoom
@@ -235,7 +235,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
         self.currentPublishingRoomId = self.params.roomId ? [@(self.params.roomId) stringValue] : self.params.strRoomId;
     }
     self.params.role = role;
-    trtcCloud->switchRole((trtc::TRTCRoleType)role);
+    trtcCloud->switchRole(( liteav::TRTCRoleType)role);
     
     if (role == TRTCRoleAnchor) {
         [self startLocalAudio];
@@ -251,25 +251,25 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
     if (role==TRTCRoleAnchor) {
         self.currentPublishingRoomId = self.params.roomId ? [@(self.params.roomId) stringValue] : self.params.strRoomId;
     }
-    trtcCloud->switchRole((trtc::TRTCRoleType)role);
+    trtcCloud->switchRole(( liteav::TRTCRoleType)role);
 }
 
 - (void)switchSubRoomRole:(TRTCRoleType)role roomId:(NSString *)roomId {
     if (role==TRTCRoleAnchor) {
         self.currentPublishingRoomId = roomId;
     }
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
-    subCloud->switchRole((trtc::TRTCRoleType)role);
+    subCloud->switchRole(( liteav::TRTCRoleType)role);
 }
 
 - (void)setupTrtcVideo {
     trtcCloud->setVideoEncoderParam(*transVideoEncParamToCpp(self.videoConfig.videoEncConfig));
     trtcCloud->enableSmallVideoStream(self.videoConfig.isSmallVideoEnabled, *transVideoEncParamToCpp(self.videoConfig.smallVideoEncConfig));
     trtcCloud->setNetworkQosParam(*transQosParamToCpp(self.videoConfig.qosConfig));
-    trtc::TRTCRenderParams renderParams = trtc::TRTCRenderParams();
-    renderParams.fillMode = (trtc::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
-    renderParams.mirrorType = (trtc::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
+ liteav::TRTCRenderParams renderParams =  liteav::TRTCRenderParams();
+    renderParams.fillMode = ( liteav::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
+    renderParams.mirrorType = ( liteav::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
     trtcCloud->setLocalRenderParams(renderParams);
     trtcCloud->setVideoEncoderMirror(self.videoConfig.isRemoteMirrorEnabled);
     // TODO TRTCCloud C++ 全平台接口暂不支持 setGSensorMode
@@ -279,7 +279,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 }
 
 - (void)setupTrtcAudio {
-    trtcCloud->getDeviceManager()->setAudioRoute((trtc::TXAudioRoute)self.audioConfig.route);
+    trtcCloud->getDeviceManager()->setAudioRoute(( liteav::TXAudioRoute)self.audioConfig.route);
     // TODO TRTCCloud C++ 全平台接口暂不支持 enableAudioEarMonitoring
 //    [self.trtc enableAudioEarMonitoring:self.audioConfig.isEarMonitoringEnabled];
     trtcCloud->enableAudioVolumeEvaluation(self.audioConfig.isVolumeEvaluationEnabled ? 300 : 0);
@@ -323,11 +323,11 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
     if (delegate) {
         if (!_trtcLocalVideoCallBack) {
             _trtcLocalVideoCallBack = new MyLocalVideoCallBack();
-            result = trtcCloud->setLocalVideoRenderCallback(trtc::TRTCVideoPixelFormat_BGRA32, (trtc::TRTCVideoBufferType)bufferType, self.trtcLocalVideoCallBack);
+            result = trtcCloud->setLocalVideoRenderCallback( liteav::TRTCVideoPixelFormat_BGRA32, ( liteav::TRTCVideoBufferType)bufferType, self.trtcLocalVideoCallBack);
         }
     } else if (_trtcLocalVideoCallBack) {
         //确保在demo层释放之前，先setLocalVideoRenderCallback(nullptr)
-        result = trtcCloud->setLocalVideoRenderCallback(trtc::TRTCVideoPixelFormat_BGRA32, (trtc::TRTCVideoBufferType)bufferType, nullptr);
+        result = trtcCloud->setLocalVideoRenderCallback( liteav::TRTCVideoPixelFormat_BGRA32, ( liteav::TRTCVideoBufferType)bufferType, nullptr);
         delete _trtcLocalVideoCallBack;
         _trtcLocalVideoCallBack = nullptr;
     }
@@ -346,10 +346,10 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
             it->second = nullptr;
         }
             _trtcRemoteVideoCallBackMap[key] = new MyRemoteVideoCallBack();
-            result = trtcCloud->setRemoteVideoRenderCallback(key.c_str(), trtc::TRTCVideoPixelFormat_BGRA32, (trtc::TRTCVideoBufferType)bufferType, _trtcRemoteVideoCallBackMap[key]);
+            result = trtcCloud->setRemoteVideoRenderCallback(key.c_str(),  liteav::TRTCVideoPixelFormat_BGRA32, ( liteav::TRTCVideoBufferType)bufferType, _trtcRemoteVideoCallBackMap[key]);
     } else if (it != _trtcRemoteVideoCallBackMap.end()&&it->second) {
         //确保在demo层释放之前，先setRemoteVideoRenderCallback(nullptr)
-        result = trtcCloud->setRemoteVideoRenderCallback(key.c_str(), trtc::TRTCVideoPixelFormat_BGRA32, (trtc::TRTCVideoBufferType)bufferType, nullptr);
+        result = trtcCloud->setRemoteVideoRenderCallback(key.c_str(),  liteav::TRTCVideoPixelFormat_BGRA32, ( liteav::TRTCVideoBufferType)bufferType, nullptr);
         delete _trtcRemoteVideoCallBackMap[key];
             _trtcRemoteVideoCallBackMap.erase(key);
     }
@@ -415,17 +415,17 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 
 - (void)setVideoFillMode:(TRTCVideoFillMode)mode {
     self.videoConfig.localRenderParams.fillMode = mode;
-    trtc::TRTCRenderParams params = trtc::TRTCRenderParams();
-    params.fillMode = (trtc::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
-    params.mirrorType = (trtc::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
+ liteav::TRTCRenderParams params =  liteav::TRTCRenderParams();
+    params.fillMode = ( liteav::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
+    params.mirrorType = ( liteav::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
     trtcCloud->setLocalRenderParams(params);
 }
 
 - (void)setLocalMirrorType:(TRTCLocalVideoMirrorType)type {
     self.videoConfig.localRenderParams.mirrorType = (TRTCVideoMirrorType)type;
-    trtc::TRTCRenderParams params = trtc::TRTCRenderParams();
-    params.fillMode = (trtc::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
-    params.mirrorType = (trtc::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
+ liteav::TRTCRenderParams params =  liteav::TRTCRenderParams();
+    params.fillMode = ( liteav::TRTCVideoFillMode)self.videoConfig.localRenderParams.fillMode;
+    params.mirrorType = ( liteav::TRTCVideoMirrorType)self.videoConfig.localRenderParams.mirrorType;
     trtcCloud->setLocalRenderParams(params);
 }
 
@@ -437,8 +437,8 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 - (void)setWaterMark:(UIImage *)image inRect:(CGRect)rect {
     NSData *imageData =  UIImagePNGRepresentation(image);
     const char *data = (const char *)imageData.bytes;
-    trtcCloud->setWaterMark(trtc::TRTCVideoStreamTypeBig, data, trtc::TRTCWaterMarkSrcTypeRGBA32, image.size.width, image.size.height, rect.origin.x, rect.origin.y, rect.size.width);
-    trtcCloud->setWaterMark(trtc::TRTCVideoStreamTypeSub, data, trtc::TRTCWaterMarkSrcTypeRGBA32, image.size.width, image.size.height, rect.origin.x, rect.origin.y, rect.size.width);
+    trtcCloud->setWaterMark( liteav::TRTCVideoStreamTypeBig, data,  liteav::TRTCWaterMarkSrcTypeRGBA32, image.size.width, image.size.height, rect.origin.x, rect.origin.y, rect.size.width);
+    trtcCloud->setWaterMark( liteav::TRTCVideoStreamTypeSub, data,  liteav::TRTCWaterMarkSrcTypeRGBA32, image.size.width, image.size.height, rect.origin.x, rect.origin.y, rect.size.width);
 }
 
 - (void)switchCamera {
@@ -469,32 +469,32 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 }
 
 - (void)startRemoteView:(NSString *)userId streamType:(TRTCVideoStreamType)type view:(TXView *)view {
-    trtcCloud->startRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type, (__bridge void*)view);
+    trtcCloud->startRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type, (__bridge void*)view);
 }
 
 - (void)startSubRoomRemoteView:(NSString *)userId roomId:(NSString *)roomId streamType:(TRTCVideoStreamType)type view:(TXView *)view {
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
-    subCloud->startRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type, (__bridge void*)view);
+    subCloud->startRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type, (__bridge void*)view);
 }
 
 - (void)updateRemoteView:(TXView *)view streamType:(TRTCVideoStreamType)type forUser:(NSString *)userId {
-    trtcCloud->updateRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type, (__bridge void*)view);
+    trtcCloud->updateRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type, (__bridge void*)view);
 }
 - (void)updateSubRoomRemoteView:(TXView *)view roomId:(NSString *)roomId streamType:(TRTCVideoStreamType)type forUser:(NSString *)userId {
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
-    subCloud->updateRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type, (__bridge void*)view);
+    subCloud->updateRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type, (__bridge void*)view);
 }
 
 - (void)stopSubRoomRemoteView:(NSString *)userId roomId:(NSString *)roomId streamType:(TRTCVideoStreamType)type {
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
-    subCloud->stopRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type);
+    subCloud->stopRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type);
 }
 
 - (void)stopRemoteView:(NSString *)userId streamType:(TRTCVideoStreamType)type {
-    trtcCloud->stopRemoteView([userId UTF8String], (trtc::TRTCVideoStreamType)type);
+    trtcCloud->stopRemoteView([userId UTF8String], ( liteav::TRTCVideoStreamType)type);
 }
 
 - (void)stopAllRemoteView {
@@ -502,48 +502,48 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 }
 
 - (void)setRemoteViewFillMode:(NSString*)userId mode:(TRTCVideoFillMode)mode {
-    _remoteRenderParams.fillMode = (trtc::TRTCVideoFillMode)mode;
-    trtcCloud->setRemoteRenderParams([userId UTF8String], trtc::TRTCVideoStreamTypeBig, _remoteRenderParams);
+    _remoteRenderParams.fillMode = ( liteav::TRTCVideoFillMode)mode;
+    trtcCloud->setRemoteRenderParams([userId UTF8String],  liteav::TRTCVideoStreamTypeBig, _remoteRenderParams);
 }
 
 - (void)setRemoteViewRotation:(NSString*)userId rotation:(TRTCVideoRotation)rotation {
-    _remoteRenderParams.rotation = (trtc::TRTCVideoRotation)rotation;
-    trtcCloud->setRemoteRenderParams([userId UTF8String], trtc::TRTCVideoStreamTypeBig, _remoteRenderParams);
+    _remoteRenderParams.rotation = ( liteav::TRTCVideoRotation)rotation;
+    trtcCloud->setRemoteRenderParams([userId UTF8String],  liteav::TRTCVideoStreamTypeBig, _remoteRenderParams);
 }
 
 - (void)startRemoteSubStreamView:(NSString *)userId view:(TXView *)view {
-    trtcCloud->startRemoteView([userId UTF8String], trtc::TRTCVideoStreamTypeSub, (__bridge void*)view);
+    trtcCloud->startRemoteView([userId UTF8String],  liteav::TRTCVideoStreamTypeSub, (__bridge void*)view);
 }
 
 - (void)stopRemoteSubStreamView:(NSString *)userId {
-    trtcCloud->stopRemoteView([userId UTF8String], trtc::TRTCVideoStreamTypeSub);
+    trtcCloud->stopRemoteView([userId UTF8String],  liteav::TRTCVideoStreamTypeSub);
 }
 
 - (void)setLocalViewFillMode:(TRTCVideoFillMode)mode {
-    _localRenderParams.fillMode = (trtc::TRTCVideoFillMode)mode;
+    _localRenderParams.fillMode = ( liteav::TRTCVideoFillMode)mode;
     trtcCloud->setLocalRenderParams(_localRenderParams);
 }
 
 - (void)setLocalViewRotation:(TRTCVideoRotation)rotation {
-    _localRenderParams.rotation = (trtc::TRTCVideoRotation)rotation;
+    _localRenderParams.rotation = ( liteav::TRTCVideoRotation)rotation;
     trtcCloud->setLocalRenderParams(_localRenderParams);
 }
 
 #if TARGET_OS_IPHONE
 - (void)setLocalViewMirror:(TRTCLocalVideoMirrorType)mirror {
-    _localRenderParams.mirrorType = (trtc::TRTCVideoMirrorType)mirror;
+    _localRenderParams.mirrorType = ( liteav::TRTCVideoMirrorType)mirror;
     trtcCloud->setLocalRenderParams(_localRenderParams);
 }
 #elif TARGET_OS_MAC
 - (void)setLocalViewMirror:(BOOL)mirror {
-    _localRenderParams.mirrorType = mirror ? trtc::TRTCVideoMirrorType_Enable : trtc::TRTCVideoMirrorType_Disable;
+    _localRenderParams.mirrorType = mirror ?  liteav::TRTCVideoMirrorType_Enable :  liteav::TRTCVideoMirrorType_Disable;
     trtcCloud->setLocalRenderParams(_localRenderParams);
 }
 #endif
 
 - (void)setRemoteSubStreamViewFillMode:(NSString *)userId mode:(TRTCVideoFillMode)mode {
-    _remoteSubRenderParams.fillMode = (trtc::TRTCVideoFillMode)mode;
-    trtcCloud->setRemoteRenderParams([userId UTF8String], trtc::TRTCVideoStreamTypeSub, _remoteSubRenderParams);
+    _remoteSubRenderParams.fillMode = ( liteav::TRTCVideoFillMode)mode;
+    trtcCloud->setRemoteRenderParams([userId UTF8String],  liteav::TRTCVideoStreamTypeSub, _remoteSubRenderParams);
 }
 
 - (void)setLocalVideoView:(UIView *)videoView {
@@ -571,7 +571,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 - (void)pushVideoStreamInSubRoom:(NSString *)roomId push:(BOOL)isPush
 {
     self.videoConfig.isMuted = !isPush;
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
     subCloud->muteLocalVideo(!isPush);
 }
@@ -597,11 +597,11 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 
 - (void)setAudioRoute:(TRTCAudioRoute)route {
     self.audioConfig.route = route;
-    trtcCloud->getDeviceManager()->setAudioRoute((trtc::TXAudioRoute)route);
+    trtcCloud->getDeviceManager()->setAudioRoute(( liteav::TXAudioRoute)route);
 }
 
 - (void)setVolumeType:(TRTCSystemVolumeType)type {
-    trtcCloud->getDeviceManager()->setSystemVolumeType((trtc::TXSystemVolumeType)type);
+    trtcCloud->getDeviceManager()->setSystemVolumeType(( liteav::TXSystemVolumeType)type);
 }
 
 - (void)setAecEnabled:(BOOL)isEnabled {
@@ -708,7 +708,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 - (void)pushAudioStreamInSubRoom:(NSString *)roomId push:(BOOL)isPush
 {
     self.audioConfig.isMuted = !isPush;
-    trtc::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
+   liteav::ITRTCCloud *subCloud = _subClouds[[roomId UTF8String]];
     SUBCLOUD_GUARD
     subCloud->muteLocalAudio(!isPush);
     if ([self.managerDelegate respondsToSelector:@selector(onMuteLocalAudio:)]) {
@@ -902,7 +902,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
     config.mode = self.streamConfig.mixMode;
     
     //将OC层的TRTCTranscodingConfig转换为C++层
-    std::shared_ptr<trtc::TRTCTranscodingConfig> configCpp = transTranscodingConfigToCpp(config);
+    std::shared_ptr< liteav::TRTCTranscodingConfig> configCpp = transTranscodingConfigToCpp(config);
     trtcCloud->setMixTranscodingConfig(configCpp.get());
 }
 
@@ -957,7 +957,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 #pragma mark - Others
 
 - (void)playCustomVideoOfUser:(NSString *)userId inView:(UIImageView *)view {
-    trtcCloud->startRemoteView([userId UTF8String], trtc::TRTCVideoStreamTypeBig, nullptr);
+    trtcCloud->startRemoteView([userId UTF8String],  liteav::TRTCVideoStreamTypeBig, nullptr);
     [renderTester addUser:userId videoView:view];
     [self setRemoteVideoRenderDelegate:userId
                               delegate:renderTester
@@ -976,7 +976,7 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
         [CustomAudioFileReader sharedInstance].delegate = self;
         [[CustomAudioFileReader sharedInstance] start:48000 channels:1 framLenInSample:960];
     } else {
-        trtcCloud->startLocalAudio((trtc::TRTCAudioQuality)_localAudioQuality);
+        trtcCloud->startLocalAudio(( liteav::TRTCAudioQuality)_localAudioQuality);
     }
 }
 
@@ -1121,29 +1121,29 @@ NSMutableDictionary<NSString *, id<TRTCVideoRenderDelegate>> *remoteVideoDelegat
 
 #pragma mark - Type Translate Funtions
 
-std::shared_ptr<trtc::TRTCVideoEncParam> transVideoEncParamToCpp(TRTCVideoEncParam *param) {
-    std::shared_ptr<trtc::TRTCVideoEncParam> videoEncParam(new trtc::TRTCVideoEncParam());
+std::shared_ptr< liteav::TRTCVideoEncParam> transVideoEncParamToCpp(TRTCVideoEncParam *param) {
+    std::shared_ptr< liteav::TRTCVideoEncParam> videoEncParam(new  liteav::TRTCVideoEncParam());
     videoEncParam->enableAdjustRes = param.enableAdjustRes;
     videoEncParam->minVideoBitrate = param.minVideoBitrate;
-    videoEncParam->resMode = (trtc::TRTCVideoResolutionMode)param.resMode;
+    videoEncParam->resMode = ( liteav::TRTCVideoResolutionMode)param.resMode;
     videoEncParam->videoBitrate = param.videoBitrate;
     videoEncParam->videoFps = param.videoFps;
-    videoEncParam->videoResolution = (trtc::TRTCVideoResolution)param.videoResolution;
+    videoEncParam->videoResolution = ( liteav::TRTCVideoResolution)param.videoResolution;
     return videoEncParam;
 }
 
-std::shared_ptr<trtc::TRTCNetworkQosParam> transQosParamToCpp(TRTCNetworkQosParam *param) {
-    std::shared_ptr<trtc::TRTCNetworkQosParam> qosParam(new trtc::TRTCNetworkQosParam());
-    qosParam->controlMode = (trtc::TRTCQosControlMode)param.controlMode;
-    qosParam->preference = (trtc::TRTCVideoQosPreference)param.preference;
+std::shared_ptr< liteav::TRTCNetworkQosParam> transQosParamToCpp(TRTCNetworkQosParam *param) {
+    std::shared_ptr< liteav::TRTCNetworkQosParam> qosParam(new  liteav::TRTCNetworkQosParam());
+    qosParam->controlMode = ( liteav::TRTCQosControlMode)param.controlMode;
+    qosParam->preference = ( liteav::TRTCVideoQosPreference)param.preference;
     return qosParam;
 }
 
-std::shared_ptr<trtc::TRTCParams> transTrtcParamToCpp(TRTCParams *param) {
-    std::shared_ptr<trtc::TRTCParams> trtcParam(new trtc::TRTCParams());
+std::shared_ptr< liteav::TRTCParams> transTrtcParamToCpp(TRTCParams *param) {
+    std::shared_ptr< liteav::TRTCParams> trtcParam(new  liteav::TRTCParams());
     trtcParam->businessInfo = [param.bussInfo UTF8String];
     trtcParam->privateMapKey = [param.privateMapKey UTF8String];
-    trtcParam->role = (trtc::TRTCRoleType)param.role;
+    trtcParam->role = ( liteav::TRTCRoleType)param.role;
     trtcParam->roomId = param.roomId;
     trtcParam->sdkAppId = param.sdkAppId;
     trtcParam->strRoomId = [param.strRoomId UTF8String];
@@ -1155,7 +1155,7 @@ std::shared_ptr<trtc::TRTCParams> transTrtcParamToCpp(TRTCParams *param) {
 }
 
 
-void transcodingConfigDeleter (trtc::TRTCTranscodingConfig* ptr) {
+void transcodingConfigDeleter ( liteav::TRTCTranscodingConfig* ptr) {
     if (!ptr) return;
     if (ptr->mixUsersArray) {
         free(ptr->mixUsersArray);
@@ -1165,8 +1165,8 @@ void transcodingConfigDeleter (trtc::TRTCTranscodingConfig* ptr) {
     ptr = nullptr;
 }
 
-std::shared_ptr<trtc::TRTCTranscodingConfig> transTranscodingConfigToCpp(TRTCTranscodingConfig *config) {
-    std::shared_ptr<trtc::TRTCTranscodingConfig> transCodingConfig(new trtc::TRTCTranscodingConfig(), transcodingConfigDeleter);
+std::shared_ptr< liteav::TRTCTranscodingConfig> transTranscodingConfigToCpp(TRTCTranscodingConfig *config) {
+    std::shared_ptr< liteav::TRTCTranscodingConfig> transCodingConfig(new  liteav::TRTCTranscodingConfig(), transcodingConfigDeleter);
     transCodingConfig->appId = config.appId;
     transCodingConfig->audioBitrate = config.audioBitrate;
     transCodingConfig->audioChannels = config.audioChannels;
@@ -1175,7 +1175,7 @@ std::shared_ptr<trtc::TRTCTranscodingConfig> transTranscodingConfigToCpp(TRTCTra
     transCodingConfig->backgroundImage = [config.backgroundImage UTF8String];
     transCodingConfig->bizId = config.bizId;
     transCodingConfig->streamId = [config.streamId UTF8String];
-    trtc::TRTCMixUser *userArray = (trtc::TRTCMixUser *)malloc(sizeof(trtc::TRTCMixUser) * config.mixUsers.count);
+    liteav::TRTCMixUser *userArray = (liteav::TRTCMixUser *)malloc(sizeof(liteav::TRTCMixUser) * config.mixUsers.count);
     for (int i=0; i<config.mixUsers.count; i++) {
         userArray[i].pureAudio = config.mixUsers[i].pureAudio;
         userArray[i].rect.left = config.mixUsers[i].rect.origin.x;
@@ -1183,14 +1183,14 @@ std::shared_ptr<trtc::TRTCTranscodingConfig> transTranscodingConfigToCpp(TRTCTra
         userArray[i].rect.right = config.mixUsers[i].rect.origin.x+config.mixUsers[i].rect.size.width;
         userArray[i].rect.bottom = config.mixUsers[i].rect.origin.y+config.mixUsers[i].rect.size.height;
         userArray[i].roomId = [config.mixUsers[i].roomID UTF8String];
-        userArray[i].streamType = (trtc::TRTCVideoStreamType)config.mixUsers[i].streamType;
+        userArray[i].streamType = ( liteav::TRTCVideoStreamType)config.mixUsers[i].streamType;
         userArray[i].userId = [config.mixUsers[i].userId UTF8String];
         userArray[i].zOrder = config.mixUsers[i].zOrder;
-        userArray[i].inputType = (trtc::TRTCMixInputType)config.mixUsers[i].inputType;
+        userArray[i].inputType = ( liteav::TRTCMixInputType)config.mixUsers[i].inputType;
     }
     transCodingConfig->mixUsersArray = userArray;
     transCodingConfig->mixUsersArraySize = (int)config.mixUsers.count;
-    transCodingConfig->mode = (trtc::TRTCTranscodingConfigMode)config.mode;
+    transCodingConfig->mode = ( liteav::TRTCTranscodingConfigMode)config.mode;
     transCodingConfig->streamId = [config.streamId UTF8String];
     transCodingConfig->videoBitrate = config.videoBitrate;
     transCodingConfig->videoFramerate = config.videoFramerate;
@@ -1200,9 +1200,9 @@ std::shared_ptr<trtc::TRTCTranscodingConfig> transTranscodingConfigToCpp(TRTCTra
     return transCodingConfig;
 }
 
-std::shared_ptr<trtc::TRTCAudioFrame> transAudioFrameToCpp(TRTCAudioFrame *audioFrame) {
-    std::shared_ptr<trtc::TRTCAudioFrame> audioFrameCpp(new trtc::TRTCAudioFrame());
-    audioFrameCpp->audioFormat = trtc::TRTCAudioFrameFormatPCM;
+std::shared_ptr< liteav::TRTCAudioFrame> transAudioFrameToCpp(TRTCAudioFrame *audioFrame) {
+    std::shared_ptr< liteav::TRTCAudioFrame> audioFrameCpp(new  liteav::TRTCAudioFrame());
+    audioFrameCpp->audioFormat =  liteav::TRTCAudioFrameFormatPCM;
     audioFrameCpp->channel = audioFrame.channels;
     audioFrameCpp->data = (char *)audioFrame.data.bytes;
     audioFrameCpp->length = (uint32_t)audioFrame.data.length;
@@ -1211,14 +1211,14 @@ std::shared_ptr<trtc::TRTCAudioFrame> transAudioFrameToCpp(TRTCAudioFrame *audio
     return audioFrameCpp;
 }
 
-TRTCQualityInfo *transQualityInfoFromCpp(trtc::TRTCQualityInfo *info) {
+TRTCQualityInfo *transQualityInfoFromCpp( liteav::TRTCQualityInfo *info) {
     TRTCQualityInfo *qualityInfo = [[TRTCQualityInfo alloc] init];
     qualityInfo.quality = (TRTCQuality)info->quality;
     qualityInfo.userId = [NSString stringWithUTF8String:info->userId];
     return qualityInfo;
 }
 
-TRTCStatistics *transStatisticsFromCpp(const trtc::TRTCStatistics& statistics) {
+TRTCStatistics *transStatisticsFromCpp(const  liteav::TRTCStatistics& statistics) {
     TRTCStatistics *trtcStatistics = [[TRTCStatistics alloc] init];
     trtcStatistics.appCpu = statistics.appCpu;
     trtcStatistics.downLoss = statistics.downLoss;
@@ -1262,14 +1262,14 @@ TRTCStatistics *transStatisticsFromCpp(const trtc::TRTCStatistics& statistics) {
     return trtcStatistics;
 }
 
-TRTCVolumeInfo *transVolumeInfoFromCpp(trtc::TRTCVolumeInfo *info) {
+TRTCVolumeInfo *transVolumeInfoFromCpp( liteav::TRTCVolumeInfo *info) {
     TRTCVolumeInfo *volumeInfo = [[TRTCVolumeInfo alloc] init];
     volumeInfo.userId = [NSString stringWithUTF8String:info->userId];
     volumeInfo.volume = info->volume;
     return volumeInfo;
 }
 
-TRTCAudioFrame *transAudioFrameFromCpp(trtc::TRTCAudioFrame *frame) {
+TRTCAudioFrame *transAudioFrameFromCpp( liteav::TRTCAudioFrame *frame) {
     TRTCAudioFrame *audioFrame = [[TRTCAudioFrame alloc] init];
     audioFrame.channels = frame->channel;
     audioFrame.data = [[NSData alloc] initWithBytes:frame->data length:frame->length];
@@ -1278,8 +1278,8 @@ TRTCAudioFrame *transAudioFrameFromCpp(trtc::TRTCAudioFrame *frame) {
     return audioFrame;
 }
 
-std::shared_ptr<trtc::TRTCSwitchRoomConfig> transSwitchRoomConfigToCpp(TRTCSwitchRoomConfig *cfg) {
-    std::shared_ptr<trtc::TRTCSwitchRoomConfig> switchRoomConfigCpp(new trtc::TRTCSwitchRoomConfig());
+std::shared_ptr< liteav::TRTCSwitchRoomConfig> transSwitchRoomConfigToCpp(TRTCSwitchRoomConfig *cfg) {
+    std::shared_ptr< liteav::TRTCSwitchRoomConfig> switchRoomConfigCpp(new  liteav::TRTCSwitchRoomConfig());
     if (cfg.privateMapKey) {
         switchRoomConfigCpp->privateMapKey = [cfg.privateMapKey UTF8String];
     }
@@ -1293,13 +1293,13 @@ std::shared_ptr<trtc::TRTCSwitchRoomConfig> transSwitchRoomConfigToCpp(TRTCSwitc
     return switchRoomConfigCpp;
 }
 
-TRTCVideoFrame *transVideoFrameFromCpp(trtc::TRTCVideoFrame *frame) {
+TRTCVideoFrame *transVideoFrameFromCpp( liteav::TRTCVideoFrame *frame) {
     TRTCVideoFrame *videoFrame = [[TRTCVideoFrame alloc] init];
     videoFrame.bufferType = TRTCVideoBufferType_NSData;
     videoFrame.data = [[NSData alloc] initWithBytes:frame->data length:frame->length];
     videoFrame.pixelBuffer = nil;
     videoFrame.pixelFormat = (TRTCVideoPixelFormat)frame->videoFormat;
-    if (frame->videoFormat == trtc::TRTCVideoPixelFormat_BGRA32) {
+    if (frame->videoFormat ==  liteav::TRTCVideoPixelFormat_BGRA32) {
         videoFrame.pixelFormat = TRTCVideoPixelFormat_32BGRA;
     }
     videoFrame.rotation = (TRTCVideoRotation)frame->rotation;
@@ -1381,13 +1381,13 @@ void MyTRTCCoudCallBack::onUserAudioAvailable(const char* userId, bool available
     }
 }
 
-void MyTRTCCoudCallBack::onFirstVideoFrame(const char* userId, const trtc::TRTCVideoStreamType streamType, const int width, const int height) {
+void MyTRTCCoudCallBack::onFirstVideoFrame(const char* userId, const  liteav::TRTCVideoStreamType streamType, const int width, const int height) {
     if ([trtcDelegate respondsToSelector:@selector(onFirstVideoFrame:streamType:width:height:)]) {
         [trtcDelegate onFirstVideoFrame:[NSString stringWithUTF8String:userId] streamType:(TRTCVideoStreamType)streamType width:width height:height];
     }
 }
 
-void MyTRTCCoudCallBack::onNetworkQuality(trtc::TRTCQualityInfo localQuality, trtc::TRTCQualityInfo* remoteQuality, uint32_t remoteQualityCount) {
+void MyTRTCCoudCallBack::onNetworkQuality( liteav::TRTCQualityInfo localQuality,  liteav::TRTCQualityInfo* remoteQuality, uint32_t remoteQualityCount) {
     
     TRTCQualityInfo *qualityInfo = transQualityInfoFromCpp(&localQuality);
     NSArray<TRTCQualityInfo *> *qualityInfoArray = [[NSArray alloc] init];
@@ -1399,14 +1399,14 @@ void MyTRTCCoudCallBack::onNetworkQuality(trtc::TRTCQualityInfo localQuality, tr
     }
 }
 
-void MyTRTCCoudCallBack::onStatistics(const trtc::TRTCStatistics& statics) {
+void MyTRTCCoudCallBack::onStatistics(const  liteav::TRTCStatistics& statics) {
     TRTCStatistics *trtcStatistics = transStatisticsFromCpp(statics);
     if ([trtcDelegate respondsToSelector:@selector(onStatistics:)]) {
         [trtcDelegate onStatistics:trtcStatistics];
     }
 }
 
-void MyTRTCCoudCallBack::onUserVoiceVolume(trtc::TRTCVolumeInfo* userVolumes, uint32_t userVolumesCount, uint32_t totalVolume) {
+void MyTRTCCoudCallBack::onUserVoiceVolume( liteav::TRTCVolumeInfo* userVolumes, uint32_t userVolumesCount, uint32_t totalVolume) {
     NSArray<TRTCVolumeInfo *> *volumeInfos = [[NSArray alloc] init];
     for (int i=0; i<userVolumesCount; i++) {
         volumeInfos = [volumeInfos arrayByAddingObject:transVolumeInfoFromCpp(&userVolumes[i])];
@@ -1495,23 +1495,23 @@ void MyTRTCSubCoudCallBack::onRemoteUserLeaveRoom(const char* userId, int reason
 }
 
 
-void MyAudioCallBack::onCapturedAudioFrame(trtc::TRTCAudioFrame *frame) {
-    if ([trtcDelegate respondsToSelector:@selector(onCapturedRawAudioFrame:)]) {
-        [trtcAudioDelegate onCapturedRawAudioFrame:transAudioFrameFromCpp(frame)];
+void MyAudioCallBack::onCapturedAudioFrame( liteav::TRTCAudioFrame *frame) {
+    if ([trtcDelegate respondsToSelector:@selector(onCapturedAudioFrame:)]) {
+        [trtcAudioDelegate onCapturedAudioFrame:transAudioFrameFromCpp(frame)];
     }
 }
 
-void MyAudioCallBack::onMixedPlayAudioFrame(trtc::TRTCAudioFrame *frame) {
+void MyAudioCallBack::onMixedPlayAudioFrame( liteav::TRTCAudioFrame *frame) {
     if ([trtcDelegate respondsToSelector:@selector(onMixedPlayAudioFrame:)]) {
         [trtcAudioDelegate onMixedPlayAudioFrame:transAudioFrameFromCpp(frame)];
     }
 }
 
-void MyLocalVideoCallBack::onRenderVideoFrame(const char* userId, trtc::TRTCVideoStreamType streamType, trtc::TRTCVideoFrame* frame) {
+void MyLocalVideoCallBack::onRenderVideoFrame(const char* userId,  liteav::TRTCVideoStreamType streamType,  liteav::TRTCVideoFrame* frame) {
     [trtcLocalVideoDelegate onRenderVideoFrame:transVideoFrameFromCpp(frame) userId:[NSString stringWithUTF8String:userId] streamType:(TRTCVideoStreamType)streamType];
 }
 
-void MyRemoteVideoCallBack::onRenderVideoFrame(const char* userId, trtc::TRTCVideoStreamType streamType, trtc::TRTCVideoFrame* frame) {
+void MyRemoteVideoCallBack::onRenderVideoFrame(const char* userId,  liteav::TRTCVideoStreamType streamType,  liteav::TRTCVideoFrame* frame) {
     id<TRTCVideoRenderDelegate> delegate = [remoteVideoDelegateDic objectForKey:[NSString stringWithUTF8String:userId]];
     if (delegate) {
         [delegate onRenderVideoFrame:transVideoFrameFromCpp(frame) userId:[NSString stringWithUTF8String:userId] streamType:(TRTCVideoStreamType)streamType];

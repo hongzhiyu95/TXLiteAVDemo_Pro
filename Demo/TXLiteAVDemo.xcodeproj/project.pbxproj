@@ -55,6 +55,8 @@
 		2BFD9F3D2844853A00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
 		2BFD9F3E2844854D00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
 		2BFD9F3F2844856700F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
+		33F68BC02A5D2C310088FFC6 /* TRTCCloudManagerCpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA43B525254BBD74008D8588 /* TRTCCloudManagerCpp.mm */; };
+		33F68BC32A5D2C350088FFC6 /* TRTCCloudBgmManagerCpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA640FB8255E85E10098F2D4 /* TRTCCloudBgmManagerCpp.mm */; };
 		3A821071230EB863000CB377 /* on_mic.aac in Resources */ = {isa = PBXBuildFile; fileRef = 3A820EB7230E6ACF000CB377 /* on_mic.aac */; };
 		3A821083230EB866000CB377 /* giftSent.aac in Resources */ = {isa = PBXBuildFile; fileRef = 3A820E85230E3BAB000CB377 /* giftSent.aac */; };
 		3A821086230EB86B000CB377 /* 欢呼.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3A820E11230C3719000CB377 /* 欢呼.m4a */; };
@@ -2615,6 +2617,7 @@
 				3F57C598236C1EBC00D4DFCE /* TRTCSettingsMessageCell.m in Sources */,
 				6AB334711FA96543007C8244 /* UIWebView+AFNetworking.m in Sources */,
 				2BA8A9292999F7F700F7C666 /* CameraPushViewController.m in Sources */,
+				33F68BC32A5D2C350088FFC6 /* TRTCCloudBgmManagerCpp.mm in Sources */,
 				3F57C593236C1EBC00D4DFCE /* UISegmentedControl+TRTC.m in Sources */,
 				3F57C5ED236C1EBC00D4DFCE /* TRTCEffectSettingsViewController.m in Sources */,
 				3F57C589236C1EBC00D4DFCE /* UITextField+TRTC.m in Sources */,
@@ -2725,6 +2728,7 @@
 				12033DCE23BE18C90088163F /* NSObject+MJKeyValue.m in Sources */,
 				3F57C534236C1EBC00D4DFCE /* TRTCRemoteUserSettingsViewController.m in Sources */,
 				3F57C56B236C1EBC00D4DFCE /* TRTCAudioConfig.m in Sources */,
+				33F68BC02A5D2C310088FFC6 /* TRTCCloudManagerCpp.mm in Sources */,
 				A035040920D20A01007E61C6 /* QRCode.m in Sources */,
 				40091FA51F4FCBBE009B882D /* UIImage+Additions.m in Sources */,
 				4540803C23292D4D00C3CAD5 /* PhotoUtil.m in Sources */,
@@ -2854,6 +2858,7 @@
 					ENABLE_TRTC,
 					ENABLE_V2PUSH,
 					ENABLE_V2PLAY,
+					ENABLE_TRTC_CPP,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",
@@ -2983,6 +2988,7 @@
 					ENABLE_AV,
 					ENABLE_TRTC,
 					ENABLE_V2PUSH,
+					ENABLE_TRTC_CPP,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",

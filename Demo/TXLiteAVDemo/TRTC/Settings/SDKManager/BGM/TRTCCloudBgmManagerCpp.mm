@@ -7,9 +7,11 @@
 //
 
 #import "TRTCCloudBgmManagerCpp.h"
-#import "cpp_interface/ITRTCCloud.h"
+#import <cpp_interface/ITRTCCloud.h>
 
-class MyMusicPlayObserver : public trtc::ITXMusicPlayObserver{
+
+using namespace liteav;
+class MyMusicPlayObserver : public ITXMusicPlayObserver{
 public:
     __weak TRTCCloudBgmManagerCpp *bgmManager;
     void(^progressNotify)(float progress);
@@ -25,7 +27,7 @@ public:
 
 @implementation TRTCCloudBgmManagerCpp
 {
-    trtc::ITRTCCloud *trtcCloud;
+    ITRTCCloud *trtcCloud;
     MyMusicPlayObserver *musicObserver;
     BOOL isPlaying;
     BOOL isOnPause;
@@ -37,7 +39,7 @@ public:
     float bgmPitch;
     float bgmSpeed;
     NSInteger micVolume;
-    trtc::TXVoiceReverbType reverbType;
+    liteav::TXVoiceReverbType reverbType;
     int32_t bgmId;
 }
 
@@ -142,8 +144,8 @@ public:
     return bgmSpeed;
 }
 
-- (TXVoiceReverbType)getReverb {
-    return (TXVoiceReverbType)reverbType;
+- (  liteav::TXVoiceReverbType)getReverb {
+    return (  liteav::TXVoiceReverbType)reverbType;
 }
 
 - (void)setBgmVolume:(NSInteger)volume {
@@ -179,15 +181,15 @@ public:
     trtcCloud->getAudioEffectManager()->setVoiceCaptureVolume((int)volume);
 }
 
-- (void)setReverb:(TXVoiceReverbType)reverb {
-    reverbType = (trtc::TXVoiceReverbType)reverb;
+- (void)setReverb:(  liteav::TXVoiceReverbType)reverb {
+    reverbType = (  liteav::TXVoiceReverbType)reverb;
     trtcCloud->getAudioEffectManager()->setVoiceReverbType(reverbType);
 }
 
 #pragma mark - Type Translate Funtions
 
-std::shared_ptr<trtc::AudioMusicParam> transMusicParamToCpp(TXAudioMusicParam *param) {
-    std::shared_ptr<trtc::AudioMusicParam> musicParam(new trtc::AudioMusicParam(param.ID, (char*)[param.path UTF8String]));
+std::shared_ptr<AudioMusicParam> transMusicParamToCpp(TXAudioMusicParam *param) {
+    std::shared_ptr<AudioMusicParam> musicParam(new AudioMusicParam(param.ID, (char*)[param.path UTF8String]));
     musicParam->endTimeMS = param.endTimeMS;
     musicParam->isShortFile = param.isShortFile;
     musicParam->loopCount = (int)param.loopCount;
