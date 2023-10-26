@@ -50,6 +50,7 @@
 @property (strong, nonatomic) TRTCSettingsSegmentItem *roleItem;
 @property (strong, nonatomic) TRTCSettingsSegmentItem *roomIdTypeItem;
 @property (strong, nonatomic) TRTCSettingsSegmentItem *videoCodecItem;
+@property (strong, nonatomic) TRTCSettingsSegmentItem *netEnvItem;
 
 @property (strong, nonatomic) UIButton *joinButton;
 @property (nonatomic, retain) AVAsset* customSourceAsset;
@@ -173,6 +174,10 @@ TRTCCloudManager *manager;
                                                                    items:@[@"264", @"265"]
                                                            selectedIndex:1
                                                                   action:nil];
+    self.netEnvItem = [[TRTCSettingsSegmentItem alloc] initWithTitle:@"云端幻境"
+                                                               items:@[@"正式", @"测试",@"体验"]
+                                                       selectedIndex:0
+                                                              action:nil];
 
     NSMutableArray *items = [@[self.roomItem,
                                self.nameItem,
@@ -185,7 +190,8 @@ TRTCCloudManager *manager;
                                self.audio3AItem,
                                self.audioRecvModeItem,
                                self.videoRecvModeItem,
-                               self.roomIdTypeItem]
+                               self.roomIdTypeItem,
+                               self.netEnvItem]
                              mutableCopy];
 
     // 在线直播场景，才有角色选择按钮
@@ -421,6 +427,7 @@ TRTCCloudManager *manager;
     }
     [manager stopSpeedTest];
     [manager enableHEVCEncode:self.videoCodecItem.selectedIndex == 1];
+    [manager setNetEnv:self.netEnvItem.selectedIndex];
     TRTCMainViewController *vc = [[UIStoryboard storyboardWithName:@"TRTC" bundle:nil] instantiateViewControllerWithIdentifier:@"TRTCMainViewController"];
     vc.trtcCloudManager = manager;
     vc.remoteUserManager = remoteManager;

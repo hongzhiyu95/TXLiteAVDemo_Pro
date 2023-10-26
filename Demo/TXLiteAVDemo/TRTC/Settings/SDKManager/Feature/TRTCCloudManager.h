@@ -167,6 +167,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// 设置HEVC编码
 /// @param enableHEVC 开启HEVC编码
 - (void)enableHEVCEncode:(BOOL)enableHEVC;
+/// 设置云端幻境
+/// @param env 环境参数 0:正式环境，1:开发测试环境，2：体验环境，3：pstn环境
+- (void)setNetEnv:(NSInteger)env;
 
 /// 设置HEVC编解码能力
 /// （测试使用，iOS设备如无意外均支持H265）

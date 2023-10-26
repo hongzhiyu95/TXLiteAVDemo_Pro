@@ -981,7 +981,16 @@
     config.videoLayoutList = videoLayerList;
     [self.trtc startPublishMediaStream:target encoderParam:params  mixingConfig:config];
 }
-
+- (void)setNetEnv:(NSInteger)env{
+    NSDictionary *json = @{
+        @"api": @"setNetEnv",
+        @"params": @{
+            @"env": @(env)
+        }
+    };
+    NSString *jsonString = [self jsonStringFrom:json];
+    [self.trtc callExperimentalAPI:jsonString];
+}
 #pragma mark - Message
 
 - (BOOL)sendCustomMessage:(NSString *)message {

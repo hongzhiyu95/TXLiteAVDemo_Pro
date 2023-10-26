@@ -361,3 +361,6 @@ SDK/TXSoundTouch.xcframework/ios-x86_64-simulator/TXSoundTouch.framework/Modules
 SDK/TXSoundTouch.xcframework/TXSoundTouch.dSYM/Contents/Info.plist
 SDK/TXSoundTouch.xcframework/TXSoundTouch.dSYM/Contents/Resources/DWARF/TXSoundTouch
 Demo/TXLiteAVDemo/TRTC/GenerateTestUserSig.h
+Demo/TXLiteAVDemo.xcodeproj/xcshareddata/xcschemes/TXLiteAVDemo_Professional copy.xcscheme
+Demo/TXLiteAVDemo.xcodeproj/xcshareddata/xcschemes/TXLiteAVDemo_TRTC.xcscheme
+Demo/TXLiteAVDemo.xcodeproj/xcuserdata/einhorn.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
