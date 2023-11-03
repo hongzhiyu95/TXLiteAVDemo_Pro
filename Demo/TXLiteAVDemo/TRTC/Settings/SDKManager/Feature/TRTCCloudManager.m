@@ -52,7 +52,7 @@
 @property (nonatomic) NSInteger bizId;
 @property (strong, nonatomic) TXDeviceManager *deviceManager;
 @property (strong, nonatomic) TXAudioEffectManager *audioEffectManager;
-
+@property (assign ,nonatomic) TRTCAudioQuality trtcAudioQuality;
 // 视频文件播放
 @property (strong, nonatomic) TestSendCustomVideoData *videoCaptureTester;
 @property (strong, nonatomic) TestSendCustomVideoData *subVideoCaptureTester;
@@ -79,6 +79,7 @@
         _scene = scene;
         _appId = appId;
         _bizId = bizId;
+        _trtcAudioQuality = TRTCAudioQualityDefault;
         _videoConfig = [[TRTCVideoConfig alloc] initWithScene:scene];
         _audioConfig = [[TRTCAudioConfig alloc] init];
 #pragma mark - 接管AVAudioSession用 记得测试完注释掉
@@ -600,7 +601,7 @@
 }
 
 - (void)setAudioQuality:(TRTCAudioQuality)quality {
-    [self.trtc setAudioQuality:quality];
+    self.trtcAudioQuality = quality;
 }
 
 - (void)setAudioCustomCaptureEnabled:(BOOL)isEnabled {
@@ -1087,7 +1088,7 @@
         [[AVAudioSession sharedInstance]setCategory:AVAudioSessionCategoryPlayAndRecord mode:AVAudioSessionModeDefault options:109 error:nil];
 
         [[AVAudioSession sharedInstance]setActive:YES error:nil];
-        [self.trtc startLocalAudio];
+        [self.trtc startLocalAudio:self.trtcAudioQuality];
     }
 }
 
