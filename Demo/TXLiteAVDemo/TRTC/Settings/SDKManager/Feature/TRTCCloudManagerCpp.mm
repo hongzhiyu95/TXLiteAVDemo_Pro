@@ -11,7 +11,7 @@
 *
 *    3. 消息发送有两种：自定义消息和SEI消息，具体适用场景和限制可参照TRTCCloud.h中sendCustomCmdMsg和sendSEIMsg的接口注释
 */
-
+#ifdef ENABLE_TRTC_CPP
 #import "cpp_interface/ITRTCCloud.h"
 #import "TRTCCloudManagerCpp.h"
 #import "TRTCCloudDef.h"
@@ -1521,3 +1521,4 @@ void MyRemoteVideoCallBack::onRenderVideoFrame(const char* userId,  liteav::TRTC
 
 
 @end
+#endif

@@ -7,6 +7,7 @@
 //
 
 #import "TRTCCloudBgmManagerCpp.h"
+#ifdef ENABLE_TRTC_CPP
 #import <cpp_interface/ITRTCCloud.h>
 
 
@@ -223,3 +224,4 @@ void MyMusicPlayObserver::onComplete(int id,int errCode) {
 }
 
 @end
+#endif

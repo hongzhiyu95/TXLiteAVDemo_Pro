@@ -371,7 +371,7 @@ typedef NS_ENUM(NSInteger, ENUM_TYPE_CACHE_STRATEGY) {
         [self toastTip:@"切换到265"];
         _btnSwitchStream.tag = 1;
         // 切换到 265
-        [_player switchStream:hevcPlayUrl];
+      //  [_player switchStream:hevcPlayUrl];
         self.playUrl = hevcPlayUrl;
     } else {
         if ([self.playUrl hasSuffix:@"_h265.flv"]) {
@@ -380,7 +380,7 @@ typedef NS_ENUM(NSInteger, ENUM_TYPE_CACHE_STRATEGY) {
         [btn setImage:[UIImage imageNamed:@"h265"] forState:UIControlStateNormal];
         [self toastTip:@"切换到264"];
         _btnSwitchStream.tag = 0;
-        [_player switchStream:normalPlayUrl];
+       // [_player switchStream:normalPlayUrl];
         self.playUrl = normalPlayUrl;
     }
     _addressBarController.text = self.playUrl;
@@ -600,7 +600,7 @@ typedef NS_ENUM(NSInteger, ENUM_TYPE_CACHE_STRATEGY) {
     if([_player isPlaying]) {
         if (result != nil && result.length > 0) {
             [self toastTip:@"开始切流"];
-            [_player switchStream:result];
+          //  [_player switchStream:result];
         } else {
             [self toastTip:@"扫码异常"];
         }

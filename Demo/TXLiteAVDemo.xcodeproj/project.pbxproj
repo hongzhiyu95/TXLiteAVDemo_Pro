@@ -55,6 +55,7 @@
 		2BFD9F3D2844853A00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
 		2BFD9F3E2844854D00F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
 		2BFD9F3F2844856700F79D6B /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2BFD9F3C2844853A00F79D6B /* GLKit.framework */; };
+		332FDB122B4BE46000029834 /* AudioUnitManager.mm in Sources */ = {isa = PBXBuildFile; fileRef = 332FDB112B4BE46000029834 /* AudioUnitManager.mm */; };
 		33F68BC02A5D2C310088FFC6 /* TRTCCloudManagerCpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA43B525254BBD74008D8588 /* TRTCCloudManagerCpp.mm */; };
 		33F68BC32A5D2C350088FFC6 /* TRTCCloudBgmManagerCpp.mm in Sources */ = {isa = PBXBuildFile; fileRef = BA640FB8255E85E10098F2D4 /* TRTCCloudBgmManagerCpp.mm */; };
 		3A821071230EB863000CB377 /* on_mic.aac in Resources */ = {isa = PBXBuildFile; fileRef = 3A820EB7230E6ACF000CB377 /* on_mic.aac */; };
@@ -430,6 +431,8 @@
 		2BFD9F312844846800F79D6B /* MetalKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MetalKit.framework; path = System/Library/Frameworks/MetalKit.framework; sourceTree = SDKROOT; };
 		2BFD9F3A2844850000F79D6B /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		2BFD9F3C2844853A00F79D6B /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		332FDB102B4BE46000029834 /* AudioUnitManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AudioUnitManager.h; sourceTree = "<group>"; };
+		332FDB112B4BE46000029834 /* AudioUnitManager.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AudioUnitManager.mm; sourceTree = "<group>"; };
 		337E7EB12A57C9E600CCD072 /* ImSDK_Plus_Pro.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImSDK_Plus_Pro.framework; path = ../SDK/ImSDK_Plus_Pro.framework; sourceTree = "<group>"; };
 		3A820E11230C3719000CB377 /* 欢呼.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = "欢呼.m4a"; sourceTree = "<group>"; };
 		3A820E85230E3BAB000CB377 /* giftSent.aac */ = {isa = PBXFileReference; lastKnownFileType = file; path = giftSent.aac; sourceTree = "<group>"; };
@@ -1184,6 +1187,8 @@
 				3F57C4EA236C1EBB00D4DFCE /* TRTCAudioConfig.m */,
 				3F57C4ED236C1EBB00D4DFCE /* TRTCAudioRecordManager.h */,
 				3F57C4E9236C1EBB00D4DFCE /* TRTCAudioRecordManager.m */,
+				332FDB102B4BE46000029834 /* AudioUnitManager.h */,
+				332FDB112B4BE46000029834 /* AudioUnitManager.mm */,
 			);
 			path = Feature;
 			sourceTree = "<group>";
@@ -2615,6 +2620,7 @@
 				918775E21FEA5CE3001D19D0 /* ViewController+MASAdditions.m in Sources */,
 				40091F801F4FCBBE009B882D /* QBSlomoIconView.m in Sources */,
 				3F57C598236C1EBC00D4DFCE /* TRTCSettingsMessageCell.m in Sources */,
+				332FDB122B4BE46000029834 /* AudioUnitManager.mm in Sources */,
 				6AB334711FA96543007C8244 /* UIWebView+AFNetworking.m in Sources */,
 				2BA8A9292999F7F700F7C666 /* CameraPushViewController.m in Sources */,
 				33F68BC32A5D2C350088FFC6 /* TRTCCloudBgmManagerCpp.mm in Sources */,
@@ -2858,7 +2864,6 @@
 					ENABLE_TRTC,
 					ENABLE_V2PUSH,
 					ENABLE_V2PLAY,
-					ENABLE_TRTC_CPP,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",
@@ -2988,7 +2993,6 @@
 					ENABLE_AV,
 					ENABLE_TRTC,
 					ENABLE_V2PUSH,
-					ENABLE_TRTC_CPP,
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(PROJECT_DIR)/../../sdk/liteav/build/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/TXLiteAVSDK_Professional.framework/Headers",
